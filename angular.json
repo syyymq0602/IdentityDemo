@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ppfds": {
+    "PrimaryPumpFds": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -161,7 +161,7 @@
       }
     }
   },
-  "defaultProject": "ppfds",
+  "defaultProject": "PrimaryPumpFds",
   "cli": {
     "analytics": false
   }
