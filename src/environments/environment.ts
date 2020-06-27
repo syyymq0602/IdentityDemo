@@ -1,7 +1,7 @@
 export const environment = {
   production: false,
   application: {
-    name: 'PrimaryPumpFds',
+    name: '主泵故障诊断系统',
     logoUrl: ''
   },
   oAuthConfig: {

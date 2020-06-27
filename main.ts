@@ -1,16 +1,12 @@
-import { app, BrowserWindow, screen } from 'electron';
+import { app, BrowserWindow } from 'electron';
 import * as path from 'path';
 
 let mainWindow: BrowserWindow = null;
 const serve = process.argv.slice(1).some(value => value === '--serve');
 
 function createWindow(): BrowserWindow {
-  const size = screen.getPrimaryDisplay().workAreaSize;
   mainWindow = new BrowserWindow({
-    x: 0,
-    y: 0,
-    height: size.height,
-    width: size.width,
+    show: false,
     webPreferences: {
       nodeIntegration: true,
       allowRunningInsecureContent: serve
@@ -23,6 +19,9 @@ function createWindow(): BrowserWindow {
     mainWindow.loadFile(path.join(__dirname, 'dist/index.html'));
   }
 
+  mainWindow.maximize();
+  mainWindow.show();
+
   // Open the DevTools.
   // mainWindow.webContents.openDevTools();
 
@@ -30,7 +29,7 @@ function createWindow(): BrowserWindow {
 }
 
 app.on('ready', () => {
-  createWindow();
+  setTimeout(() => createWindow(), 400);
 
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();
