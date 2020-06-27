@@ -46,3 +46,5 @@ testem.log
 Thumbs.db
 
 yarn.lock
+/main.js
+/main.js.map
