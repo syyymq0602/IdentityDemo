@@ -2,7 +2,7 @@ export const environment = {
   production: false,
   application: {
     name: '主泵故障诊断系统',
-    logoUrl: ''
+    logoUrl: 'assets/logo.png'
   },
   oAuthConfig: {
     issuer: 'https://localhost:44367',

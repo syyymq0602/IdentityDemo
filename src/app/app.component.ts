@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngxs/store';
+import { AddReplaceableComponent } from '@abp/ng.core';
+import { eThemeBasicComponents } from '@abp/ng.theme.basic';
+import { LogoComponent } from './theme/components';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +11,15 @@ import { Component } from '@angular/core';
     <router-outlet></router-outlet>
   `
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+  constructor(private store: Store) {}
+
+  ngOnInit() {
+    this.store.dispatch(
+      new AddReplaceableComponent({
+        component: LogoComponent,
+        key: eThemeBasicComponents.Logo,
+      }),
+    );
+  }
 }
