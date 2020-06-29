@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LogoComponent } from './components';
+import { LogoComponent, RoutesComponent } from './components';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-  declarations: [LogoComponent],
+  declarations: [LogoComponent,RoutesComponent],
   imports: [
     CommonModule,
+    SharedModule
   ],
-  exports: [LogoComponent]
+  exports: [LogoComponent,RoutesComponent]
 })
 export class ThemeModule { }
