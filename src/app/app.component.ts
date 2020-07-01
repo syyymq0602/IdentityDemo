@@ -4,6 +4,7 @@ import { AddReplaceableComponent, ConfigStateService } from '@abp/ng.core';
 import { eThemeBasicComponents } from '@abp/ng.theme.basic';
 import { LogoComponent, RoutesComponent } from './theme/components';
 import { eIdentityRouteNames } from '@abp/ng.identity';
+import { MainLayoutComponent } from './theme/layouts';
 
 @Component({
   selector: 'app-root',
@@ -31,6 +32,12 @@ export class AppComponent implements OnInit {
       new AddReplaceableComponent({
         component: RoutesComponent ,
         key: eThemeBasicComponents.Routes,
+      }),
+    );
+    this.store.dispatch(
+      new AddReplaceableComponent({
+        component: MainLayoutComponent ,
+        key: eThemeBasicComponents.ApplicationLayout,
       }),
     );
   }
