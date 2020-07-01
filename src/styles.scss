@@ -25,3 +25,9 @@
     transform: translate(-50%, -50%);
   }
 }
+
+// 解决 nz-icon 图标垂直不居中的问题，与 bootstrap 样式冲突
+// TODO: 彻底删除 bootstrap 样式
+svg {
+  vertical-align: unset !important;
+}
