@@ -8,7 +8,8 @@ const routes: Routes = [
     loadChildren: () => import('./home/home.module').then(m => m.HomeModule),
     data: {
       routes: {
-        name: '::Menu:Home'
+        name: '::Menu:Home',
+        iconClass: 'fas fa-home'
       } as ABP.Route
     }
   },

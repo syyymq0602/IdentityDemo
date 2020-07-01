@@ -1,47 +1,108 @@
-<!-- TODO: 路由不应该硬编码在代码里，参见 2.9 的代码 -->
 <ul class="navbar-nav">
+  <ng-container
+    *ngFor="let route of visibleRoutes$ | async; trackBy: trackByFn"
+    [ngTemplateOutlet]="route?.children?.length ? dropdownLink : defaultLink"
+    [ngTemplateOutletContext]="{ $implicit: route }"
+  >
+  </ng-container>
 
-  <!-- 首页 -->
-  <li class="nav-item">
-    <a class="nav-link" routerLink="/">
-      <i class="fas fa-home"></i> 首页
-    </a>
-  </li>
-
-  <!-- 管理 -->
-  <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="javascript:void(0)">
-      <i class="fas fa-wrench"></i> 管理
-    </a>
-
-    <!-- 下拉菜单容器 -->
-    <div
-      class="dropdown-menu border-0 shadow-sm"
-      (click)="$event.preventDefault(); $event.stopPropagation()"
-      [class.d-block]="smallScreen"
-    >
-
-      <!-- 角色管理菜单 -->
-      <div
-        class="dropdown-submenu border-0 shadow-sm"
-        [class.d-block]="smallScreen"
-        *abpPermission="'AbpIdentity.Roles'"
+  <ng-template #defaultLink let-route>
+    <li class="nav-item" *abpPermission="route.requiredPolicy">
+      <a class="nav-link" [routerLink]="[route.url]"
+      ><i *ngIf="route.iconClass" [ngClass]="route.iconClass"></i>
+        {{ route.name | abpLocalization }}</a
       >
-        <a class="dropdown-item" routerLink="/identity/roles">
-          <i class="fas fa-id-card"></i> 角色管理
+    </li>
+  </ng-template>
+
+  <ng-template #dropdownLink let-route>
+    <li
+      #navbarRootDropdown
+      *abpPermission="route.requiredPolicy"
+      [abpVisibility]="routeContainer"
+      class="nav-item dropdown"
+      (click)="
+        navbarRootDropdown.expand
+          ? (navbarRootDropdown.expand = false)
+          : (navbarRootDropdown.expand = true)
+      "
+    >
+      <a
+        class="nav-link dropdown-toggle"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+        href="javascript:void(0)"
+      >
+        <i *ngIf="route.iconClass" [ngClass]="route.iconClass"></i>
+        {{ route.name | abpLocalization }}
+      </a>
+      <div
+        #routeContainer
+        class="dropdown-menu border-0 shadow-sm"
+        (click)="$event.preventDefault(); $event.stopPropagation()"
+        [class.d-block]="smallScreen && navbarRootDropdown.expand"
+      >
+        <ng-template
+          #forTemplate
+          ngFor
+          [ngForOf]="route.children"
+          [ngForTrackBy]="trackByFn"
+          [ngForTemplate]="childWrapper"
+        ></ng-template>
+      </div>
+    </li>
+  </ng-template>
+
+  <ng-template #childWrapper let-child>
+    <ng-template
+      [ngTemplateOutlet]="child?.children?.length ? dropdownChild : defaultChild"
+      [ngTemplateOutletContext]="{ $implicit: child }"
+    ></ng-template>
+  </ng-template>
+
+  <ng-template #defaultChild let-child>
+    <div class="dropdown-submenu" *abpPermission="child.requiredPolicy">
+      <a class="dropdown-item" [routerLink]="[child.url]">
+        <i *ngIf="child.iconClass" [ngClass]="child.iconClass"></i>
+        {{ child.name | abpLocalization }}</a
+      >
+    </div>
+  </ng-template>
+
+  <ng-template #dropdownChild let-child>
+    <div
+      [abpVisibility]="childrenContainer"
+      class="dropdown-submenu"
+      ngbDropdown
+      #dropdownSubmenu="ngbDropdown"
+      placement="right-top"
+      [autoClose]="true"
+      *abpPermission="child.requiredPolicy"
+    >
+      <div ngbDropdownToggle [class.dropdown-toggle]="false">
+        <a
+          abpEllipsis="210px"
+          [abpEllipsisEnabled]="!smallScreen"
+          role="button"
+          class="btn d-block text-left dropdown-toggle"
+        >
+          <i *ngIf="child.iconClass" [ngClass]="child.iconClass"></i>
+          {{ child.name | abpLocalization }}
         </a>
       </div>
-
-      <!-- 用户管理菜单 -->
       <div
-        class="dropdown-submenu border-0 shadow-sm"
-        [class.d-block]="smallScreen"
-        *abpPermission="'AbpIdentity.Users'"
+        #childrenContainer
+        class="dropdown-menu border-0 shadow-sm"
+        [class.d-block]="smallScreen && dropdownSubmenu.isOpen()"
       >
-        <a class="dropdown-item" routerLink="/identity/users">
-          <i class="fas fa-users"></i>  用户管理
-        </a>
+        <ng-template
+          ngFor
+          [ngForOf]="child.children"
+          [ngForTrackBy]="trackByFn"
+          [ngForTemplate]="childWrapper"
+        ></ng-template>
       </div>
     </div>
-  </li>
+  </ng-template>
 </ul>

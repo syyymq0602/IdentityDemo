@@ -1,26 +1,35 @@
-import {
-  Component,
-  HostBinding,
-  AfterViewInit,
-} from '@angular/core';
-import { fromEvent } from 'rxjs';
-import { debounceTime } from 'rxjs/operators';
+import { ABP, ConfigState } from '@abp/ng.core';
+import { Component, Input, TrackByFunction } from '@angular/core';
+import { Select } from '@ngxs/store';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-routes',
   templateUrl: 'routes.component.html',
 })
-export class RoutesComponent implements AfterViewInit {
-  @HostBinding('class.mx-auto')
-  marginAuto = true;
+export class RoutesComponent {
+  @Select(ConfigState.getOne('routes'))
+  routes$: Observable<ABP.FullRoute[]>;
 
-  smallScreen = window.innerWidth < 992;
+  @Input()
+  smallScreen: boolean;
 
-  ngAfterViewInit() {
-    fromEvent(window, 'resize')
-      .pipe(debounceTime(150))
-      .subscribe(() => {
-        this.smallScreen = window.innerWidth < 992;
-      });
+  get visibleRoutes$(): Observable<ABP.FullRoute[]> {
+    return this.routes$.pipe(map(routes => getVisibleRoutes(routes)));
   }
+
+  trackByFn: TrackByFunction<ABP.FullRoute> = (_, item) => item.name;
+}
+
+function getVisibleRoutes(routes: ABP.FullRoute[]) {
+  return routes.reduce((acc, val) => {
+    if (val.invisible) return acc;
+
+    if (val.children && val.children.length) {
+      val.children = getVisibleRoutes(val.children);
+    }
+
+    return [...acc, val];
+  }, []);
 }
