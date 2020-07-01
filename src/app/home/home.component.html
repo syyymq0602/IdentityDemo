@@ -1,20 +1,36 @@
-<div id="AbpContentToolbar"></div>
-<div class="jumbotron text-center">
-  <h1>{{ '::Welcome' | abpLocalization }}</h1>
-  <div class="row">
-    <div class="col-md-6 mx-auto">
-      <p>{{ '::LongWelcomeMessage' | abpLocalization }}</p>
-      <hr class="my-4"/>
-    </div>
-  </div>
-  <a class="btn btn-primary px-4" href="https://abp.io?ref=tmpl" target="_blank">abp.io</a>
-  <a
-    *ngIf="!hasLoggedIn"
-    [state]="{ redirectUrl: '/' }"
-    class="px-4 btn btn-primary ml-1"
-    id="login-button"
-    role="button"
-    routerLink="/account/login"
-  ><i class="fa fa-sign-in"></i> {{ 'AbpAccount::Login' | abpLocalization }}</a
-  >
-</div>
+<nz-card style="text-align: center">
+  <h1 nz-typography>{{ '::Welcome' | abpLocalization }}</h1>
+  <nz-space nzDirection="vertical">
+    <nz-space-item>
+      <h4 nz-typography>{{ '::LongWelcomeMessage' | abpLocalization }}</h4>
+    </nz-space-item>
+
+    <nz-space-item>
+      <nz-space nzDirection="horizontal">
+        <nz-space-item>
+          <a
+            nz-button
+            nzType="primary"
+            nzSize="large"
+            href="https://abp.io?ref=tmpl"
+            target="_blank">
+            abp.io
+          </a>
+        </nz-space-item>
+        <nz-space-item>
+          <a
+            nz-button
+            nzType="primary"
+            nzSize="large"
+            routerLink="/account/login"
+            *ngIf="!hasLoggedIn"
+            [state]="{ redirectUrl: '/' }"
+          >
+            <i class="fa fa-sign-in"></i>
+            {{ 'AbpAccount::Login' | abpLocalization }}
+          </a>
+        </nz-space-item>
+      </nz-space>
+    </nz-space-item>
+  </nz-space>
+</nz-card>
