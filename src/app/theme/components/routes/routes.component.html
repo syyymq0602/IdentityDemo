@@ -1,50 +1,32 @@
-<ul class="navbar-nav">
+<ul nz-menu nzMode="horizontal">
   <ng-container
     *ngFor="let route of visibleRoutes$ | async; trackBy: trackByFn"
-    [ngTemplateOutlet]="route?.children?.length ? dropdownLink : defaultLink"
+    [ngTemplateOutlet]="route?.children?.length ? topRoute : baseRoute"
     [ngTemplateOutletContext]="{ $implicit: route }"
   >
   </ng-container>
 
-  <ng-template #defaultLink let-route>
-    <li class="nav-item" *abpPermission="route.requiredPolicy">
-      <a class="nav-link" [routerLink]="[route.url]"
-      ><i *ngIf="route.iconClass" [ngClass]="route.iconClass"></i>
-        {{ route.name | abpLocalization }}</a
-      >
+  <!-- 没有子路由的 item 的模板 -->
+  <ng-template #baseRoute let-route>
+    <li nz-menu-item
+        *abpPermission="route.requiredPolicy"
+    >
+      <a [routerLink]="route.url">
+        {{ route.name | abpLocalization }}
+      </a>
     </li>
   </ng-template>
 
-  <ng-template #dropdownLink let-route>
+  <!-- 包含子路由的 item 的模板 -->
+  <ng-template #topRoute let-route>
     <li
-      #navbarRootDropdown
+      nz-submenu
+      nzTitle="{{route.name | abpLocalization}}"
       *abpPermission="route.requiredPolicy"
       [abpVisibility]="routeContainer"
-      class="nav-item dropdown"
-      (click)="
-        navbarRootDropdown.expand
-          ? (navbarRootDropdown.expand = false)
-          : (navbarRootDropdown.expand = true)
-      "
     >
-      <a
-        class="nav-link dropdown-toggle"
-        data-toggle="dropdown"
-        aria-haspopup="true"
-        aria-expanded="false"
-        href="javascript:void(0)"
-      >
-        <i *ngIf="route.iconClass" [ngClass]="route.iconClass"></i>
-        {{ route.name | abpLocalization }}
-      </a>
-      <div
-        #routeContainer
-        class="dropdown-menu border-0 shadow-sm"
-        (click)="$event.preventDefault(); $event.stopPropagation()"
-        [class.d-block]="smallScreen && navbarRootDropdown.expand"
-      >
+      <div #routeContainer>
         <ng-template
-          #forTemplate
           ngFor
           [ngForOf]="route.children"
           [ngForTrackBy]="trackByFn"
@@ -54,55 +36,30 @@
     </li>
   </ng-template>
 
-  <ng-template #childWrapper let-child>
+  <!-- 判断子路由是否还有子路由，有则使用 nz-menu-group 分组，否则调用 baseRoute 模板-->
+  <ng-template #childWrapper let-route>
     <ng-template
-      [ngTemplateOutlet]="child?.children?.length ? dropdownChild : defaultChild"
-      [ngTemplateOutletContext]="{ $implicit: child }"
+      [ngTemplateOutlet]="route?.children?.length ? groupRoute : baseRoute"
+      [ngTemplateOutletContext]="{ $implicit: route }"
     ></ng-template>
   </ng-template>
 
-  <ng-template #defaultChild let-child>
-    <div class="dropdown-submenu" *abpPermission="child.requiredPolicy">
-      <a class="dropdown-item" [routerLink]="[child.url]">
-        <i *ngIf="child.iconClass" [ngClass]="child.iconClass"></i>
-        {{ child.name | abpLocalization }}</a
-      >
-    </div>
-  </ng-template>
-
-  <ng-template #dropdownChild let-child>
-    <div
+  <!-- nz-menu-group 分组-->
+  <ng-template #groupRoute let-route>
+    <li
+      nz-menu-group
+      nzTitle="{{ route.name | abpLocalization }}"
       [abpVisibility]="childrenContainer"
-      class="dropdown-submenu"
-      ngbDropdown
-      #dropdownSubmenu="ngbDropdown"
-      placement="right-top"
-      [autoClose]="true"
-      *abpPermission="child.requiredPolicy"
+      *abpPermission="route.requiredPolicy"
     >
-      <div ngbDropdownToggle [class.dropdown-toggle]="false">
-        <a
-          abpEllipsis="210px"
-          [abpEllipsisEnabled]="!smallScreen"
-          role="button"
-          class="btn d-block text-left dropdown-toggle"
-        >
-          <i *ngIf="child.iconClass" [ngClass]="child.iconClass"></i>
-          {{ child.name | abpLocalization }}
-        </a>
-      </div>
-      <div
-        #childrenContainer
-        class="dropdown-menu border-0 shadow-sm"
-        [class.d-block]="smallScreen && dropdownSubmenu.isOpen()"
-      >
+      <ul #childrenContainer>
         <ng-template
           ngFor
-          [ngForOf]="child.children"
+          [ngForOf]="route.children"
           [ngForTrackBy]="trackByFn"
           [ngForTemplate]="childWrapper"
         ></ng-template>
-      </div>
-    </div>
+      </ul>
+    </li>
   </ng-template>
 </ul>
