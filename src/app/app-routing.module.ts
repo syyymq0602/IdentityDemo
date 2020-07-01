@@ -9,7 +9,7 @@ const routes: Routes = [
     data: {
       routes: {
         name: '::Menu:Home',
-        iconClass: 'fas fa-home'
+        iconClass: 'home'
       } as ABP.Route
     }
   },

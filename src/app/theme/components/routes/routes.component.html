@@ -12,6 +12,7 @@
         *abpPermission="route.requiredPolicy"
     >
       <a [routerLink]="route.url">
+        <i nz-icon *ngIf="route.iconClass" [nzType]="route.iconClass"></i>
         {{ route.name | abpLocalization }}
       </a>
     </li>
@@ -21,8 +22,8 @@
   <ng-template #topRoute let-route>
     <li
       nz-submenu
-      nzTitle="{{route.name | abpLocalization}}"
       *abpPermission="route.requiredPolicy"
+      [nzTitle]="route.name | abpLocalization"
       [abpVisibility]="routeContainer"
     >
       <div #routeContainer>
@@ -48,9 +49,9 @@
   <ng-template #groupRoute let-route>
     <li
       nz-menu-group
-      nzTitle="{{ route.name | abpLocalization }}"
-      [abpVisibility]="childrenContainer"
       *abpPermission="route.requiredPolicy"
+      [nzTitle]="route.name | abpLocalization"
+      [abpVisibility]="childrenContainer"
     >
       <ul #childrenContainer>
         <ng-template
