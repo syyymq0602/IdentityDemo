@@ -27,9 +27,15 @@
             "extractCss": true,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",
+                "output": "/assets/"
+              }
             ],
             "styles": [
+              "./node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
               {
                 "input": "node_modules/@abp/ng.theme.shared/styles/bootstrap-rtl.min.css",
                 "inject": false,
@@ -114,6 +120,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
               {
                 "input": "node_modules/bootstrap/dist/css/bootstrap.min.css",
                 "inject": true,
