@@ -7,7 +7,6 @@ import { map } from 'rxjs/operators';
 @Component({
   selector: 'app-routes',
   templateUrl: 'routes.component.html',
-  styleUrls: ['routes.component.scss'],
 })
 export class RoutesComponent {
   @Select(ConfigState.getOne('routes'))

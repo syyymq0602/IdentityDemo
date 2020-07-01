@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngxs/store';
-import { AddReplaceableComponent } from '@abp/ng.core';
+import { AddReplaceableComponent, ConfigStateService } from '@abp/ng.core';
 import { eThemeBasicComponents } from '@abp/ng.theme.basic';
 import { LogoComponent, RoutesComponent } from './theme/components';
+import { eIdentityRouteNames } from '@abp/ng.identity';
 
 @Component({
   selector: 'app-root',
@@ -12,9 +13,14 @@ import { LogoComponent, RoutesComponent } from './theme/components';
   `
 })
 export class AppComponent implements OnInit {
-  constructor(private store: Store) {}
+  constructor(private store: Store, private config: ConfigStateService) {}
 
   ngOnInit() {
+    this.replaceComponents();
+    this.patchRoutes();
+  }
+
+  private replaceComponents() {
     this.store.dispatch(
       new AddReplaceableComponent({
         component: LogoComponent,
@@ -27,5 +33,11 @@ export class AppComponent implements OnInit {
         key: eThemeBasicComponents.Routes,
       }),
     );
+  }
+
+  private patchRoutes() {
+    this.config.dispatchPatchRouteByName(eIdentityRouteNames.Administration, { iconClass: 'cluster'})
+    this.config.dispatchPatchRouteByName(eIdentityRouteNames.Users, { iconClass: 'user'})
+    this.config.dispatchPatchRouteByName(eIdentityRouteNames.Roles, { iconClass: 'idcard'})
   }
 }

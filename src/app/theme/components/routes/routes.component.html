@@ -23,7 +23,8 @@
     <li
       nz-submenu
       *abpPermission="route.requiredPolicy"
-      [nzTitle]="route.name | abpLocalization"
+      nzTitle=" {{route.name | abpLocalization}} "
+      [nzIcon]="route.iconClass"
       [abpVisibility]="routeContainer"
     >
       <div #routeContainer>
