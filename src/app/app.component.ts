@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { AddReplaceableComponent, ConfigStateService } from '@abp/ng.core';
 import { eThemeBasicComponents } from '@abp/ng.theme.basic';
-import { LogoComponent, ProfileComponent, RoutesComponent } from './theme/components';
+import { LoginComponent, LogoComponent, ProfileComponent, RoutesComponent } from './theme/components';
 import { eIdentityRouteNames } from '@abp/ng.identity';
 import { MainLayoutComponent } from './theme/layouts';
+import { eAccountComponents } from '@abp/ng.account';
 
 @Component({
   selector: 'app-root',
@@ -44,6 +45,12 @@ export class AppComponent implements OnInit {
       new AddReplaceableComponent({
         component: MainLayoutComponent ,
         key: eThemeBasicComponents.ApplicationLayout,
+      }),
+    );
+    this.store.dispatch(
+      new AddReplaceableComponent({
+        component: LoginComponent ,
+        key: eAccountComponents.Login,
       }),
     );
   }
