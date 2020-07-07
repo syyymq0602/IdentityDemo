@@ -2,7 +2,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LogoComponent, ProfileComponent, RoutesComponent, LoginComponent } from './components';
 import { SharedModule } from '../shared/shared.module';
-import { NzButtonModule, NzDropDownModule, NzIconModule, NzLayoutModule, NzMenuModule } from 'ng-zorro-antd';
+import {
+  NzButtonModule,
+  NzCardModule,
+  NzDropDownModule,
+  NzIconModule,
+  NzLayoutModule,
+  NzMenuModule
+} from 'ng-zorro-antd';
 import { MainLayoutComponent } from './layouts';
 
 @NgModule({
@@ -14,8 +21,9 @@ import { MainLayoutComponent } from './layouts';
     NzIconModule,
     NzLayoutModule,
     NzButtonModule,
-    NzDropDownModule
+    NzDropDownModule,
+    NzCardModule
   ],
-  exports: [LogoComponent,RoutesComponent, ProfileComponent]
+  exports: [LogoComponent, RoutesComponent, ProfileComponent, LoginComponent]
 })
 export class ThemeModule { }

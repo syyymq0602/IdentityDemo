@@ -21,9 +21,7 @@ const LOGGERS = [NgxsLoggerPluginModule.forRoot({ disabled: false })];
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    CoreModule.forRoot({
-      environment
-    }),
+    CoreModule.forRoot({ environment }),
     ThemeSharedModule.forRoot(),
     AccountConfigModule.forRoot({ redirectUrl: '/' }),
     IdentityConfigModule,
