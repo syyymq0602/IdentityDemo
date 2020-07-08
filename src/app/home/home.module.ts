@@ -5,7 +5,7 @@ import { HomeComponent } from './home.component';
 
 import {
   NzButtonModule,
-  NzCardModule,
+  NzCardModule, NzDescriptionsModule,
   NzDividerModule, NzGridModule,
   NzIconModule,
   NzLayoutModule,
@@ -35,7 +35,8 @@ import { DecissionSupportComponent } from './decission-support/decission-support
     NzMenuModule,
     NzIconModule,
     NzDividerModule,
-    NzGridModule
+    NzGridModule,
+    NzDescriptionsModule
   ]
 })
 export class HomeModule {
