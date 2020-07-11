@@ -9,7 +9,7 @@ import {
   NzDividerModule, NzGridModule,
   NzIconModule,
   NzLayoutModule,
-  NzMenuModule,
+  NzMenuModule, NzTableModule,
   NzTypographyModule
 } from 'ng-zorro-antd';
 
@@ -36,7 +36,8 @@ import { DecissionSupportComponent } from './decission-support/decission-support
     NzIconModule,
     NzDividerModule,
     NzGridModule,
-    NzDescriptionsModule
+    NzDescriptionsModule,
+    NzTableModule
   ]
 })
 export class HomeModule {

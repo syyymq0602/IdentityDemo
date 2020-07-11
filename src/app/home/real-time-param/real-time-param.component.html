@@ -1,8 +1,33 @@
 <nz-divider nzOrientation="center" nzText="实时参数监测"></nz-divider>
 
-<!--引用nz Descriptions描述列表-->
-<nz-descriptions >
-  <nz-descriptions-item nzTitle="参数名称">Zhou Maomao</nz-descriptions-item>
-  <nz-descriptions-item nzTitle="参数值">18100000000</nz-descriptions-item>
-  <nz-descriptions-item nzTitle="状态">Hangzhou, Zhejiang</nz-descriptions-item>
-</nz-descriptions>
+<nz-table #nzTable [nzData] = "listOfData" nzTableLayout="fixed">
+  <!--表格表头-->
+  <thead>
+  <!--使用<tr>标签定义行-->
+  <tr>
+    <!--使用<th>标签定义表格的表头-->
+    <th nzWidth = "60px"></th>
+    <th>参数</th>
+    <th>数值</th>
+    <th>状态</th>
+  </tr>
+  </thead>
+
+  <!--表格内容-->
+  <tbody>
+  <ng-container *ngFor = "let data of nzTable.data">
+    <tr>
+      <td [nzExpand] = "expandSet.has(data.id)" (nzExpandChange)="onExpandChange(data.id, $event)"></td>
+      <td>{{ data.paraName }}</td>
+      <td>{{ data.numericalValue }}</td>
+      <td>{{ data.statusBar }}</td>
+    </tr>
+
+    <tr [nzExpand]="expandSet.has(data.id)">
+      <span>{{ data.description }}</span>
+    </tr>
+
+  </ng-container>
+  </tbody>
+
+</nz-table>
