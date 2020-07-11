@@ -1,4 +1,4 @@
-<nz-card style="width:600px;" [nzBordered]="false" nzTitle="登录" >
+<nz-card style="width: 400px;" [nzBordered]="false" nzTitle="登录" >
 
     <strong *ngIf = " isSelfRegistrationEnabled ">
       {{ 'AbpAccount::AreYouANewUser' | abpLocalization }}
@@ -12,7 +12,7 @@
     <form [formGroup]="form" (ngSubmit)="onSubmit()" validateOnSubmit class="mt-4">
 
       <!-- 显示用户名称或邮箱地址以及输入框 -->
-      <div class = "form-group">
+      <div class = "user-name">
         <label for = "login-input-user-name-or-email-address">
           {{
           'AbpAccount::UserNameOrEmailAddress' | abpLocalization

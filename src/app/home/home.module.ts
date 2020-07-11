@@ -22,7 +22,15 @@ import { DiagnosticResultsComponent } from './diagnostic-results/diagnostic-resu
 import { DecissionSupportComponent } from './decission-support/decission-support.component';
 
 @NgModule({
-  declarations: [HomeComponent, WelcomeComponent, RealTimeParamComponent, ParamMonitorComponent, DiagnosticResultsComponent, DecissionSupportComponent],
+  declarations:
+    [
+      HomeComponent,
+      WelcomeComponent,
+      RealTimeParamComponent,
+      ParamMonitorComponent,
+      DecissionSupportComponent,
+      DiagnosticResultsComponent
+    ],
   imports: [
     SharedModule,
     HomeRoutingModule,
