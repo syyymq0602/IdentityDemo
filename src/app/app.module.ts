@@ -34,5 +34,7 @@ const LOGGERS = [NgxsLoggerPluginModule.forRoot({ disabled: false })];
   declarations: [AppComponent],
   bootstrap: [AppComponent]
 })
-export class AppModule {
+
+export class AppModule
+{
 }

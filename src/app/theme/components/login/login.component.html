@@ -1,5 +1,6 @@
-<nz-card style="width: 400px;" [nzBordered]="false" nzTitle="登录" >
-
+<nz-card>
+    <h1>登录</h1>
+  <hr>
     <strong *ngIf = " isSelfRegistrationEnabled ">
       {{ 'AbpAccount::AreYouANewUser' | abpLocalization }}
       <a class="text-decoration-none" routerLink="/account/register">
@@ -29,7 +30,7 @@
       </div>
 
       <!-- 显示密码及其输入框 -->
-      <div class="form-group">
+      <div class="password">
         <label for = "login-input-password">
           {{ 'AbpAccount::Password' | abpLocalization }}
         </label>
@@ -67,4 +68,3 @@
     </form>
 
 </nz-card>
-
