@@ -21,7 +21,7 @@ export class RealTimeParamComponent implements OnInit {
   listOfData = [
     {
       id: 1,
-      paraName: 'Frame_vibration',
+      paraName: '电机轴联轴节转速',
       numericalValue: 32,
       expand: false,
       statusBar: '良好',
@@ -29,7 +29,7 @@ export class RealTimeParamComponent implements OnInit {
     },
     {
       id: 2,
-      paraName: 'Zero_speed_measurement',
+      paraName: '泵轴位移',
       numericalValue: 32,
       expand: false,
       statusBar: '良好',
@@ -37,7 +37,7 @@ export class RealTimeParamComponent implements OnInit {
     },
     {
       id: 3,
-      paraName: 'Left_lifting_oil_pressure',
+      paraName: '电机轴位移',
       numericalValue: 32,
       expand: false,
       statusBar: '良好',
@@ -45,12 +45,307 @@ export class RealTimeParamComponent implements OnInit {
     },
     {
       id: 4,
-      paraName: 'Right_lifting_oil_pressure',
+      paraName: '电机顶部机架振动',
+      numericalValue: 32,
+      expand: false,
+      statusBar: '良好',
+      description: '对于该参数的描述'
+    },
+    {
+      id: 5,
+      paraName: '电机下部机架振动',
+      numericalValue: 32,
+      expand: false,
+      statusBar: '良好',
+      description: '对于该参数的描述'
+    },
+    {
+      id: 6,
+      paraName: '负荷',
+      numericalValue: 32,
+      expand: false,
+      statusBar: '良好',
+      description: '对于该参数的描述'
+    },
+    {
+      id: 7,
+      paraName: 'U项定子绕组温度',
+      numericalValue: 32,
+      expand: false,
+      statusBar: '良好',
+      description: '对于该参数的描述'
+    },
+    {
+      id: 8,
+      paraName: 'V项定子绕组温度',
+      numericalValue: 32,
+      expand: false,
+      statusBar: '良好',
+      description: '对于该参数的描述'
+    },
+    {
+      id: 9,
+      paraName: 'W项定子绕组温度',
+      numericalValue: 32,
+      expand: false,
+      statusBar: '良好',
+      description: '对于该参数的描述'
+    },
+    {
+      id: 10,
+      paraName: '上导轴瓦温度',
+      numericalValue: 32,
+      expand: false,
+      statusBar: '良好',
+      description: '对于该参数的描述'
+    },
+    {
+      id: 11,
+      paraName: '上推力瓦温度',
+      numericalValue: 32,
+      expand: false,
+      statusBar: '良好',
+      description: '对于该参数的描述'
+    },
+    {
+      id: 12,
+      paraName: '下推力瓦温度',
+      numericalValue: 32,
+      expand: false,
+      statusBar: '良好',
+      description: '对于该参数的描述'
+    },
+    {
+      id: 13,
+      paraName: '电机上导轴承温度',
+      numericalValue: 32,
+      expand: false,
+      statusBar: '良好',
+      description: '对于该参数的描述'
+    },
+    {
+      id: 14,
+      paraName: '下导轴承进口润滑油温',
+      numericalValue: 32,
+      expand: false,
+      statusBar: '良好',
+      description: '对于该参数的描述'
+    },
+    {
+      id: 15,
+      paraName: '上导轴承进口润滑油温',
+      numericalValue: 32,
+      expand: false,
+      statusBar: '良好',
+      description: '对于该参数的描述'
+    },
+    {
+      id: 16,
+      paraName: '油冷器进口润滑油温',
+      numericalValue: 32,
+      expand: false,
+      statusBar: '良好',
+      description: '对于该参数的描述'
+    },
+    {
+      id: 17,
+      paraName: '油冷器出口润滑油温',
+      numericalValue: 32,
+      expand: false,
+      statusBar: '良好',
+      description: '对于该参数的描述'
+    },
+    {
+      id: 18,
+      paraName: '下导轴承进口润滑油温',
+      numericalValue: 32,
+      expand: false,
+      statusBar: '良好',
+      description: '对于该参数的描述'
+    },
+    {
+      id: 19,
+      paraName: '下导轴承出口润滑油温',
+      numericalValue: 32,
+      expand: false,
+      statusBar: '良好',
+      description: '对于该参数的描述'
+    },
+    {
+      id: 20,
+      paraName: '空冷器进口空气温度',
+      numericalValue: 32,
+      expand: false,
+      statusBar: '良好',
+      description: '对于该参数的描述'
+    },
+    {
+      id: 21,
+      paraName: '空冷器出口空气温度',
+      numericalValue: 32,
+      expand: false,
+      statusBar: '良好',
+      description: '对于该参数的描述'
+    },
+    {
+      id: 22,
+      paraName: '空冷器进口冷却水温度',
+      numericalValue: 32,
+      expand: false,
+      statusBar: '良好',
+      description: '对于该参数的描述'
+    },
+    {
+      id: 23,
+      paraName: '空冷器出口冷却水温度',
+      numericalValue: 32,
+      expand: false,
+      statusBar: '良好',
+      description: '对于该参数的描述'
+    },
+    {
+      id: 24,
+      paraName: '定子电流',
+      numericalValue: 32,
+      expand: false,
+      statusBar: '良好',
+      description: '对于该参数的描述'
+    },
+    {
+      id: 25,
+      paraName: '电机上部油箱油位',
+      numericalValue: 32,
+      expand: false,
+      statusBar: '良好',
+      description: '对于该参数的描述'
+    },
+    {
+      id: 26,
+      paraName: '电机下部油箱油位',
+      numericalValue: 32,
+      expand: false,
+      statusBar: '良好',
+      description: '对于该参数的描述'
+    },
+    {
+      id: 27,
+      paraName: '润滑油流量',
+      numericalValue: 32,
+      expand: false,
+      statusBar: '良好',
+      description: '对于该参数的描述'
+    },
+    {
+      id: 28,
+      paraName: '空冷器冷却水流量',
+      numericalValue: 32,
+      expand: false,
+      statusBar: '良好',
+      description: '对于该参数的描述'
+    },
+    {
+      id: 29,
+      paraName: '油冷器冷却水流量',
+      numericalValue: 32,
+      expand: false,
+      statusBar: '良好',
+      description: '对于该参数的描述'
+    },
+    {
+      id: 30,
+      paraName: '供油管路压力',
+      numericalValue: 32,
+      expand: false,
+      statusBar: '良好',
+      description: '对于该参数的描述'
+    },
+    {
+      id: 31,
+      paraName: '二三级轴封压力',
+      numericalValue: 32,
+      expand: false,
+      statusBar: '良好',
+      description: '对于该参数的描述'
+    },
+    {
+      id: 32,
+      paraName: '高低压泄露压力',
+      numericalValue: 32,
+      expand: false,
+      statusBar: '良好',
+      description: '对于该参数的描述'
+    },
+    {
+      id: 33,
+      paraName: '轴封注入水压力',
+      numericalValue: 32,
+      expand: false,
+      statusBar: '良好',
+      description: '对于该参数的描述'
+    },
+    {
+      id: 34,
+      paraName: '轴封密封前温度',
+      numericalValue: 32,
+      expand: false,
+      statusBar: '良好',
+      description: '对于该参数的描述'
+    },
+    {
+      id: 35,
+      paraName: '轴封注入流量',
+      numericalValue: 32,
+      expand: false,
+      statusBar: '良好',
+      description: '对于该参数的描述'
+    },
+    {
+      id: 36,
+      paraName: '高低压泄露流量',
+      numericalValue: 32,
+      expand: false,
+      statusBar: '良好',
+      description: '对于该参数的描述'
+    },
+    {
+      id: 37,
+      paraName: '高压冷却器冷却水流量',
+      numericalValue: 32,
+      expand: false,
+      statusBar: '良好',
+      description: '对于该参数的描述'
+    },
+    {
+      id: 38,
+      paraName: '高压冷却器冷却水进出口温度',
+      numericalValue: 32,
+      expand: false,
+      statusBar: '良好',
+      description: '对于该参数的描述'
+    },
+    {
+      id: 39,
+      paraName: '轴封注入水温度',
+      numericalValue: 32,
+      expand: false,
+      statusBar: '良好',
+      description: '对于该参数的描述'
+    },
+    {
+      id: 40,
+      paraName: '高低压泄露温度',
+      numericalValue: 32,
+      expand: false,
+      statusBar: '良好',
+      description: '对于该参数的描述'
+    },
+    {
+      id: 41,
+      paraName: '密封座位置',
       numericalValue: 32,
       expand: false,
       statusBar: '良好',
       description: '对于该参数的描述'
     }
   ];
-
 }

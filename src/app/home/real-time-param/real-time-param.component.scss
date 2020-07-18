@@ -1,27 +1,17 @@
-nz-divider
+h2
 {
-  background-color: #7FFFD4;
+  margin-top: 4px;
   text-align: center;
-  color:  #ffffff;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 100%;
+  background-color: #EAF2D3;
 }
 
-#customers
-{
-  font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
-  width:100%;
-  border-collapse:collapse;
-}
-#customers th
+th
 {
   font: {
-    size: 1em;
+    size: 2em;
     family: 华文楷体;
-    weight: normal;
+    weight: bold;
   }
-  border:1px solid #98bf21;
   padding:3px 7px 2px 7px;
 }
 // 设置表格表头样式
