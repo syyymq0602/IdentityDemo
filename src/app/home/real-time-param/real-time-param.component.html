@@ -1,14 +1,13 @@
-<h2>实时参数监测</h2>
-
-<nz-table #nzTable [nzData] = "listOfData" nzTableLayout="fixed">
+<!--使用[nzScroll]属性设置滚动条高度-->
+<nz-table #nzTable [nzData] = "listOfData" [nzScroll]="{ y: '390px' }" nzTableLayout="fixed" nzTitle="实时参数监测" >
   <!--表格表头-->
   <thead>
   <!--使用<tr>标签定义行-->
-  <tr>
+  <tr class = "tableHead">
     <!--使用<th>标签定义表格的表头-->
-    <th nzWidth = "60px"></th>
-    <th>参数</th>
-    <th>数值</th>
+    <th nzWidth = "30px"></th>
+    <th nzWidth = "30%">参数</th>
+    <th height="25px">数值</th>
     <th>状态</th>
   </tr>
   </thead>
@@ -31,3 +30,4 @@
   </tbody>
 
 </nz-table>
+

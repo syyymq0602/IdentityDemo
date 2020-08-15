@@ -1,21 +1,30 @@
-<nz-layout class="layout">
+<body>
 
-    <nz-sider class = "left-sider" nzWidth="400px" nzTheme="light" >
-     <app-real-time-param></app-real-time-param>
-    </nz-sider>
 
-    <nz-content>
-      <h2>主泵平面视图</h2>
-      <img src="assets/主泵平面图.png">
-    </nz-content>
+  <div class = "left-1">
+    <!--实时参数监测区-->
+    <app-real-time-param></app-real-time-param>
+  </div>
 
-    <nz-sider class = "right-sider" nzWidth="410px" nzTheme="light" >
-      <!--特性参数监测区-->
-      <app-param-monitor></app-param-monitor>
-      <!--故障诊断结果区-->
-      <app-diagnostic-results></app-diagnostic-results>
-      <!--决策支持区-->
-      <app-decission-support></app-decission-support>
-    </nz-sider>
+  <div class = "left-2">
+    <!--决策支持区-->
+    <app-decission-support></app-decission-support>
+  </div>
 
-</nz-layout>
+  <div class = "right-1">
+    <!--特性参数监测区-->
+    <app-param-monitor></app-param-monitor>
+  </div>
+
+  <div class = "right-2">
+    <!--故障诊断结果区-->
+    <app-diagnostic-results></app-diagnostic-results>
+  </div>
+
+  <div class = "main">
+    <h2>主泵平面视图</h2>
+    <img src="assets/主泵平面图.png">
+  </div>
+
+
+</body>

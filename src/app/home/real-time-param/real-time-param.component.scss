@@ -1,10 +1,25 @@
-h2
+// 设置表格标题样式
+:host ::ng-deep .ant-table-title
 {
-  margin-top: 4px;
-  text-align: center;
-  background-color: #EAF2D3;
+  margin: auto;
+  font-size:30px;
+  text-align:center;
+  padding-top: 0;
+  padding-bottom:4px;
+  background-color:	#008B8B;
+  color:#ffffff;
 }
 
+.tableHead
+{
+  font-size:1em;
+  height: 1.5em;
+  text-align:center;
+  padding-top: 0;
+  padding-bottom:4px;
+  background-color:#A7C942;
+  color:#ffffff;
+}
 th
 {
   font: {
@@ -17,9 +32,9 @@ th
 // 设置表格表头样式
 #customers th
 {
-  font-size:1.1em;
+  font-size:2em;
   text-align:center;
-  padding-top:5px;
+  padding-top: 0;
   padding-bottom:4px;
   background-color:#A7C942;
   color:#ffffff;

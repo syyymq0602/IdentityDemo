@@ -1,11 +1,10 @@
-h2
+:host ::ng-deep .ant-card-head-title
 {
-  margin-top: 4px;
-  text-align: center;
-  background-color: 	#00FA9A;
-}
-nz-card
-{
-  background-color:#FFEFD5;
-  width: 410px;
+  margin: auto;
+  font-size:30px;
+  text-align:center;
+  padding-top: 0;
+  padding-bottom:4px;
+  background-color:	#008B8B;
+  color:#ffffff;
 }

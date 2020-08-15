@@ -1,63 +1,21 @@
-<h2>特性参数监测</h2>
-<!--利用nz-space在四个特性参数卡片之间设置横向和垂向间距-->
-<nz-space-item>
-    <div nz-row>
-      <nz-space>
-        <nz-space-item>
-          <div nz-col nzSpan="12">
-            <nz-card nzTitle="功率" [nzExtra]="extraTemplate">
-              <p>Card content</p>
-            </nz-card>
-            <ng-template #extraTemplate>
-              <a>More</a>
-            </ng-template>
-          </div>
-        </nz-space-item>
-
-        <nz-space-item>
-          <div nz-col nzSpan="12">
-            <nz-card nzTitle="速度" [nzExtra]="extraTemplate">
-              <p>Card content</p>
-            </nz-card>
-            <ng-template #extraTemplate>
-              <a>More</a>
-            </ng-template>
-          </div>
-        </nz-space-item>
-      </nz-space>
-    </div>
-</nz-space-item>
-
-
 <nz-space nzDirection="vertical">
-  <nz-space-item>
-    <div nz-row>
-      <nz-space>
-        <nz-space-item>
-          <div nz-col nzSpan="12">
-            <nz-card nzTitle="转速" [nzExtra]="extraTemplate">
-              <p>Card content</p>
-            </nz-card>
-            <ng-template #extraTemplate>
-              <a>More</a>
-            </ng-template>
-          </div>
-        </nz-space-item>
 
-        <nz-space-item>
-          <div nz-col nzSpan="12">
-            <nz-card nzTitle="扬程" [nzExtra]="extraTemplate">
-              <p>Card content</p>
-            </nz-card>
-            <ng-template #extraTemplate>
-              <a>More</a>
-            </ng-template>
-          </div>
-        </nz-space-item>
-      </nz-space>
+  <nz-space-item>
+    <div id="rectangle-1">
     </div>
   </nz-space-item>
+
+  <nz-space-item>
+    <div id="rectangle-2"></div>
+  </nz-space-item>
+
+  <nz-space-item>
+    <div id="rectangle-3"></div>
+  </nz-space-item>
+
+  <nz-space-item>
+    <div id="rectangle-4"></div>
+  </nz-space-item>
+
 </nz-space>
-
-
 

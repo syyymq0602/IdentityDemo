@@ -1,20 +1,41 @@
-nz-sider
-{
-  /*设置上右下左的外边距*/
-  margin: 0 0 0 0;
-  /*设置上右下左的填充距离*/
-  padding:0 0 0 0;
+.left-1{
+  width:400px;
+  height:600px;
+  background: #2b2b2c;
+  float:left;
 }
-h2
-{
-  margin-top: 4px;
-  text-align: center;
+.left-2{
+  position: absolute;
+  width:300px;
+  margin-top: 600px;
+  margin-left: 0;
+  float:left;
+  background: #EAF2D3;
 }
-img
-{
-  width: 95%;
-  height: 92%;
+.right-1{
+  width:200px;
+  height:600px;
+  background: #fafafa;
+  float:left;
+}
+.right-2{
+  position: absolute;
+  width:300px;
+  margin-top: 600px;
+  margin-left: 300px;
+}
+.main{
+  margin-left: 600px;
+  width:100%;
+}
+h2{
   margin: auto;
-  /*上、右、下、左*/
-  padding: 0 0 0 50px;
+}
+
+img{
+  background-color: white;
+  display: inline-block;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
 }
