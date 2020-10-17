@@ -30,7 +30,7 @@ export class RealTimeParamComponent implements OnInit {
     {
       id: 2,
       paraName: '泵轴位移',
-      numericalValue: 32,
+      numericalValue: 62.7481,
       expand: false,
       statusBar: '良好',
       description: '对于该参数的描述'
@@ -70,7 +70,7 @@ export class RealTimeParamComponent implements OnInit {
     {
       id: 7,
       paraName: 'U项定子绕组温度',
-      numericalValue: 32,
+      numericalValue: 69.82365,
       expand: false,
       statusBar: '良好',
       description: '对于该参数的描述'

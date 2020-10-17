@@ -1,33 +1,67 @@
-<!--使用[nzScroll]属性设置滚动条高度-->
-<nz-table #nzTable [nzData] = "listOfData" [nzScroll]="{ y: '390px' }" nzTableLayout="fixed" nzTitle="实时参数监测" >
-  <!--表格表头-->
-  <thead>
-  <!--使用<tr>标签定义行-->
+<table class = "tableTitle">
+  <caption>
+    实时参数监测
+  </caption>
+</table>
+
+<table class = "tableBody">
   <tr class = "tableHead">
     <!--使用<th>标签定义表格的表头-->
-    <th nzWidth = "30px"></th>
-    <th nzWidth = "30%">参数</th>
-    <th height="25px">数值</th>
-    <th>状态</th>
+    <th Width = "35%">参数</th>
+    <th Width = "25%">数值</th>
+    <th Width = "20%">状态</th>
+    <th Width = "20%">限值</th>
   </tr>
-  </thead>
 
-  <!--表格内容-->
-  <tbody>
-  <ng-container *ngFor = "let data of nzTable.data">
+  <ng-container *ngFor = "let data of listOfData">
     <tr>
-      <td [nzExpand] = "expandSet.has(data.id)" (nzExpandChange)="onExpandChange(data.id, $event)"></td>
       <td>{{ data.paraName }}</td>
       <td>{{ data.numericalValue }}</td>
       <td>{{ data.statusBar }}</td>
-    </tr>
-
-    <tr [nzExpand]="expandSet.has(data.id)">
-      <span>{{ data.description }}</span>
+      <td [nzExpand] = "expandSet.has(data.id)" (nzExpandChange)="onExpandChange(data.id, $event)"></td>
     </tr>
 
   </ng-container>
-  </tbody>
 
-</nz-table>
+</table>
+
+
+
+
+
+
+
+<!--&lt;!&ndash;使用[nzScroll]属性设置滚动条高度&ndash;&gt;-->
+<!--<nz-table #nzTable [nzData] = "listOfData"  nzTableLayout="fixed" nzTitle="实时参数监测" >-->
+<!--  &lt;!&ndash;表格表头&ndash;&gt;-->
+<!--  <thead>-->
+<!--  &lt;!&ndash;使用<tr>标签定义行&ndash;&gt;-->
+<!--  <tr class = "tableHead">-->
+<!--    &lt;!&ndash;使用<th>标签定义表格的表头&ndash;&gt;-->
+<!--    <th nzWidth = "30%">参数</th>-->
+<!--    <th nzWidth = "30%">数值</th>-->
+<!--    <th nzWidth = "20%">状态</th>-->
+<!--    <th nzWidth = "20%">限值</th>-->
+<!--  </tr>-->
+<!--  </thead>-->
+
+<!--  &lt;!&ndash;表格内容&ndash;&gt;-->
+<!--  <tbody>-->
+<!--  <ng-container *ngFor = "let data of nzTable.data">-->
+<!--    <tr>-->
+
+<!--      <td>{{ data.paraName }}</td>-->
+<!--      <td>{{ data.numericalValue }}</td>-->
+<!--      <td>{{ data.statusBar }}</td>-->
+<!--      <td [nzExpand] = "expandSet.has(data.id)" (nzExpandChange)="onExpandChange(data.id, $event)"></td>-->
+<!--    </tr>-->
+
+<!--    <tr [nzExpand]="expandSet.has(data.id)">-->
+<!--      <span>{{ data.description }}</span>-->
+<!--    </tr>-->
+
+<!--  </ng-container>-->
+<!--  </tbody>-->
+
+<!--</nz-table>-->
 

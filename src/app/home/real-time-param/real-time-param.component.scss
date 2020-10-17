@@ -1,5 +1,8 @@
-// 设置表格标题样式
-:host ::ng-deep .ant-table-title
+table
+{
+  width: 600px;
+}
+caption
 {
   margin: auto;
   font-size:30px;
@@ -9,49 +12,32 @@
   background-color: rgb(0,189,183);
   color:#ffffff;
 }
+th
+{
+  border-style:solid;
+  border-width:3px;
+}
+td
+{
+  border-style:solid;
+  border-width:1px;
+}
+tr
+{
+  border-style:solid;
+  border-width:1px;
+}
+.tableBody
+{
 
+}
 .tableHead
 {
   font-size:1em;
   height: 1.5em;
   text-align:center;
-  padding-top: 0;
   padding-bottom:4px;
   background-color:#A7C942;
   color:#ffffff;
 }
-th
-{
-  font: {
-    size: 2em;
-    family: 华文楷体;
-    weight: bold;
-  }
-  padding:3px 7px 2px 7px;
-}
-// 设置表格表头样式
-#customers th
-{
-  font-size:2em;
-  text-align:center;
-  padding-top: 0;
-  padding-bottom:4px;
-  background-color:#A7C942;
-  color:#ffffff;
-}
-// 设置偶数行样式（不算表头行）
-#customers tr.alt td
-{
-  color:#000000;
-  background-color:#EAF2D3;
-}
 
-table {
-  th {
-
-  }
-}
-
-.test {
-  color: #98bf21;
-}
