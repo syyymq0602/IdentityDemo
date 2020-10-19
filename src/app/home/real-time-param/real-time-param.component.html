@@ -4,26 +4,56 @@
   </caption>
 </table>
 
-<table class = "tableBody">
-  <tr class = "tableHead">
+<nz-table #headerTable [nzData]="listOfData" [nzPageSize]="50"  [nzScroll]="{ y: '600px' }">
+  <thead>
+  <tr>
     <!--使用<th>标签定义表格的表头-->
-    <th Width = "35%">参数</th>
-    <th Width = "25%">数值</th>
-    <th Width = "20%">状态</th>
-    <th Width = "20%">限值</th>
+    <th nzWidth="12%" >序号</th>
+    <th nzWidth="36%" >参数</th>
+    <th nzWidth="25%" >数值</th>
+    <th nzWidth="15%" >状态</th>
+    <th nzWidth="11%" >限值</th>
   </tr>
+  </thead>
 
+  <tbody>
+<!--  *ngFor 是一个 Angular 的复写器（repeater）指令。 它会为列表中的每项数据复写它的宿主元素。-->
   <ng-container *ngFor = "let data of listOfData">
+    <!--使用<tr>标签定义行，使用<td>标签定义列-->
     <tr>
+      <td>{{ data.id}}</td>
       <td>{{ data.paraName }}</td>
       <td>{{ data.numericalValue }}</td>
       <td>{{ data.statusBar }}</td>
-      <td [nzExpand] = "expandSet.has(data.id)" (nzExpandChange)="onExpandChange(data.id, $event)"></td>
+      <td [nzExpand]="expandSet.has(data.id)" (nzExpandChange)="onExpandChange(data.id, $event)"></td>
     </tr>
-
+    <tr [nzExpand]="expandSet.has(data.id)">
+      <span>{{ data.description }}</span>
+    </tr>
   </ng-container>
+  </tbody>
+</nz-table>
 
-</table>
+<!--<table class = "tableBody">-->
+<!--  <tr class = "tableHead">-->
+<!--    &lt;!&ndash;使用<th>标签定义表格的表头&ndash;&gt;-->
+<!--    <th Width = "35%">参数</th>-->
+<!--    <th Width = "25%">数值</th>-->
+<!--    <th Width = "20%">状态</th>-->
+<!--    <th Width = "20%">限值</th>-->
+<!--  </tr>-->
+
+<!--  <ng-container *ngFor = "let data of listOfData">-->
+<!--    <tr>-->
+<!--      <td>{{ data.paraName }}</td>-->
+<!--      <td>{{ data.numericalValue }}</td>-->
+<!--      <td>{{ data.statusBar }}</td>-->
+<!--      <td [nzExpand] = "expandSet.has(data.id)" (nzExpandChange)="onExpandChange(data.id, $event)"></td>-->
+<!--    </tr>-->
+
+<!--  </ng-container>-->
+
+<!--</table>-->
 
 
 

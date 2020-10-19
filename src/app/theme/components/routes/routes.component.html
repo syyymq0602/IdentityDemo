@@ -11,6 +11,7 @@
     <li nz-menu-item
         *abpPermission="route.requiredPolicy"
     >
+      <!--使用 *ngIf 来根据条件包含或排除一段 HTML-->
       <a [routerLink]="route.url">
         <i nz-icon *ngIf="route.iconClass" [nzType]="route.iconClass"></i>
         {{ route.name | abpLocalization }}

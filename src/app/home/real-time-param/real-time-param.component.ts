@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NzTableModule } from 'ng-zorro-antd/table';
 
 @Component({
   selector: 'app-real-time-param',
@@ -18,30 +19,31 @@ export class RealTimeParamComponent implements OnInit {
       this.expandSet.delete(id);
     }
   }
+
   listOfData = [
     {
       id: 1,
-      paraName: '电机轴联轴节转速',
-      numericalValue: 32,
+      paraName: '泵轴转速',
+      numericalValue: 1200,
       expand: false,
-      statusBar: '良好',
-      description: '对于该参数的描述'
+      statusBar: '正常',
+      description: 'H1：1600rpm；H2:1750rpm（注：其中L1为低限，L2为低低限；H1为高限，H2为高高限）'
     },
     {
       id: 2,
       paraName: '泵轴位移',
-      numericalValue: 62.7481,
+      numericalValue: 70,
       expand: false,
-      statusBar: '良好',
-      description: '对于该参数的描述'
+      statusBar: '正常',
+      description: 'H1：100.0μm; H2: 200.0μm'
     },
     {
       id: 3,
       paraName: '电机轴位移',
-      numericalValue: 32,
+      numericalValue: 60,
       expand: false,
       statusBar: '良好',
-      description: '对于该参数的描述'
+      description: 'H1：100.0μm; H2: 200.0μm'
     },
     {
       id: 4,
@@ -49,15 +51,15 @@ export class RealTimeParamComponent implements OnInit {
       numericalValue: 32,
       expand: false,
       statusBar: '良好',
-      description: '对于该参数的描述'
+      description: 'H1：35μm; H2: 70μm'
     },
     {
       id: 5,
       paraName: '电机下部机架振动',
-      numericalValue: 32,
+      numericalValue: 40,
       expand: false,
       statusBar: '良好',
-      description: '对于该参数的描述'
+      description: 'H1：35μm; H2: 70μm'
     },
     {
       id: 6,
@@ -69,32 +71,32 @@ export class RealTimeParamComponent implements OnInit {
     },
     {
       id: 7,
-      paraName: 'U项定子绕组温度',
-      numericalValue: 69.82365,
+      paraName: '电机空冷温度U项',
+      numericalValue: 105,
       expand: false,
       statusBar: '良好',
-      description: '对于该参数的描述'
+      description: 'H1：130℃; H2: 140℃'
     },
     {
       id: 8,
-      paraName: 'V项定子绕组温度',
-      numericalValue: 32,
+      paraName: '电机空冷温度V项',
+      numericalValue: 90,
       expand: false,
       statusBar: '良好',
-      description: '对于该参数的描述'
+      description: 'H1：130℃; H2: 140℃'
     },
     {
       id: 9,
-      paraName: 'W项定子绕组温度',
-      numericalValue: 32,
+      paraName: '电机空冷温度W项',
+      numericalValue: 100,
       expand: false,
       statusBar: '良好',
-      description: '对于该参数的描述'
+      description: 'H1：130℃; H2: 140℃'
     },
     {
       id: 10,
       paraName: '上导轴瓦温度',
-      numericalValue: 32,
+      numericalValue: 110,
       expand: false,
       statusBar: '良好',
       description: '对于该参数的描述'

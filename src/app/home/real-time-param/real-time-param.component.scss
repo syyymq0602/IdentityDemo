@@ -1,6 +1,7 @@
+/*表名样式*/
 table
 {
-  width: 600px;
+  width: 450px;
 }
 caption
 {
@@ -12,32 +13,5 @@ caption
   background-color: rgb(0,189,183);
   color:#ffffff;
 }
-th
-{
-  border-style:solid;
-  border-width:3px;
-}
-td
-{
-  border-style:solid;
-  border-width:1px;
-}
-tr
-{
-  border-style:solid;
-  border-width:1px;
-}
-.tableBody
-{
 
-}
-.tableHead
-{
-  font-size:1em;
-  height: 1.5em;
-  text-align:center;
-  padding-bottom:4px;
-  background-color:#A7C942;
-  color:#ffffff;
-}
 

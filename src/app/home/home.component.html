@@ -1,4 +1,6 @@
+<!--进入系统主界面-->
 <nz-card style="text-align: center">
+
   <h1 nz-typography>{{ '::Welcome' | abpLocalization }}</h1>
   <nz-space nzDirection="vertical">
     <nz-space-item>
@@ -7,6 +9,7 @@
 
     <nz-space-item>
       <nz-space nzDirection="horizontal">
+        <!--点击进入ANDRITZ故障诊断系统主界面-->
         <nz-space-item>
           <a
             nz-button
@@ -14,9 +17,21 @@
             nzSize="large"
             href="http://localhost:4200/welcome"
             target="_blank">
-            进入主页
+            ANDRITZ
           </a>
         </nz-space-item>
+        <!--点击进入KSB故障诊断系统主界面-->
+        <nz-space-item>
+          <a
+            nz-button
+            nzType="primary"
+            nzSize="large"
+            href="http://localhost:4200/welcome"
+            target="_blank">
+            KSB
+          </a>
+        </nz-space-item>
+        <!--点击进入系统登录主界面-->
         <nz-space-item>
           <a
             nz-button
@@ -30,7 +45,10 @@
             {{ 'AbpAccount::Login' | abpLocalization }}
           </a>
         </nz-space-item>
+
       </nz-space>
+
     </nz-space-item>
   </nz-space>
+
 </nz-card>
