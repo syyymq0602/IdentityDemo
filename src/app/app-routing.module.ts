@@ -27,7 +27,10 @@ const routes: Routes = [
     loadChildren: () => import('@abp/ng.setting-management').then(m => m.SettingManagementModule)
   },
   {
+<<<<<<< HEAD
     //自定义导航栏路由
+=======
+>>>>>>> ac77ba57fdd19afe9ff9e597140aca678433f920
     path: 'test',
     loadChildren: () => import('@abp/ng.identity').then(m => m.IdentityModule),
     data: {
@@ -49,7 +52,11 @@ const routes: Routes = [
           {
             path: 'child',
             name: '搜索',
+<<<<<<< HEAD
             order: 3,
+=======
+            order: 1,
+>>>>>>> ac77ba57fdd19afe9ff9e597140aca678433f920
           },
 
         ],
@@ -73,7 +80,11 @@ const routes: Routes = [
           {
             path: 'child',
             name: '删除',
+<<<<<<< HEAD
             order: 2,
+=======
+            order: 1,
+>>>>>>> ac77ba57fdd19afe9ff9e597140aca678433f920
           },
 
         ],
