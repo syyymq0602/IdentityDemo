@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using PumpData.Localization;
@@ -14,5 +14,6 @@ namespace PumpData
         {
             LocalizationResource = typeof(PumpDataResource);
         }
+        
     }
 }

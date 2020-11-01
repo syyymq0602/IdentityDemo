@@ -1,4 +1,4 @@
-﻿using PumpData.FaultKnowledge;
+using PumpData.FaultKnowledge;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -23,7 +23,7 @@ namespace PumpData.PumpApp
         public FaultAppService(IRepository<Fault, Guid> repository)
             : base(repository)
         {
-
+            
         }
         public async Task<FaultDto> FindFaultAsync(double input)
         {

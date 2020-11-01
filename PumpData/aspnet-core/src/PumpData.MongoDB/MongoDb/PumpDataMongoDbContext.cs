@@ -1,4 +1,5 @@
 ﻿using MongoDB.Driver;
+using PumpData.Books;
 using PumpData.DiagnosticMessage;
 using PumpData.EquipmentInformations;
 using PumpData.FaultKnowledge;
@@ -17,6 +18,7 @@ namespace PumpData.MongoDB
         public IMongoCollection<Diagnose> Diagnoses => Collection<Diagnose>();
         public IMongoCollection<Fault> Faults => Collection<Fault>();
         public IMongoCollection<Parameter> Parameters => Collection<Parameter>();
+        public IMongoCollection<Book> Books => Collection<Book>();
 
         protected override void CreateModel(IMongoModelBuilder modelBuilder)
         {
@@ -42,6 +44,10 @@ namespace PumpData.MongoDB
             modelBuilder.Entity<AppUser>(b =>
             {
                 b.CollectionName = "AbpUsers";
+            });
+            modelBuilder.Entity<Book>(b =>
+            {
+                b.CollectionName = "datas";
             });
         }
     }

@@ -1,3 +1,4 @@
+using PumpData.DiagnosticMessage;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -7,14 +8,14 @@ using Volo.Abp.Data;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.Domain.Repositories;
 
-namespace PumpData.DiagnosticMessage
+namespace PumpData.Books
 {
-    public class DiagnosticDataSeederContributor :
-        IDataSeedContributor, ITransientDependency
+    public class BookDataSeederContributor :
+         IDataSeedContributor, ITransientDependency
     {
-        private readonly IRepository<Diagnose, Guid> _diagnoseRepository;
+        private readonly IRepository<Book, Guid> _diagnoseRepository;
 
-        public DiagnosticDataSeederContributor(IRepository<Diagnose, Guid> diagnoseRepository)
+        public BookDataSeederContributor(IRepository<Book, Guid> diagnoseRepository)
         {
             _diagnoseRepository = diagnoseRepository;
         }
@@ -23,7 +24,7 @@ namespace PumpData.DiagnosticMessage
         {
             string line;
             // 定义文件绝对路径
-            string path = @"C:\\Users\\tpl\\Desktop\\主泵\\csv\\DiagnosticMessage.csv";
+            string path = @"C:\\Users\\tpl\\Desktop\\FFT_ys.csv";
             StreamReader sr = new StreamReader(path, Encoding.UTF8);
             sr.ReadLine();
             while (!sr.EndOfStream)
@@ -32,19 +33,15 @@ namespace PumpData.DiagnosticMessage
                 line = sr.ReadLine();
                 string[] arr = line.Split(",");
                 // 通过异步方法给对象赋值插入到数据库中
-                var diagnosehas = await _diagnoseRepository.FindAsync(p => p.D_id == Convert.ToDouble(arr[0]));
+                var diagnosehas = await _diagnoseRepository.FindAsync(p => p.Pressure1 == Convert.ToDouble(arr[0]));
                 if (diagnosehas == null)
                 {
                     await _diagnoseRepository.InsertAsync(
-                           new Diagnose
-                           {
-                               D_id = Convert.ToDouble(arr[0]),
-                               D_Date = Convert.ToDateTime(arr[1]),
-                               D_Result = arr[2],
-                               D_DecisionSupport = arr[3],
-                               StateInformation = arr[4],
-                           },
-                           autoSave: true
+                       new Book
+                       {
+                           Pressure1 = Convert.ToDouble(arr[0])
+                       },
+                       autoSave: true
                     );
                 }
             }

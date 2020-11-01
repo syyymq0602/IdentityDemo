@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -21,7 +21,7 @@ namespace PumpData.FaultKnowledge
         {
             string line;
             // 定义文件绝对路径
-            string path = @"C:\\Users\\tpl\\Desktop\\主泵\\pump\\csv\\FaultKnowledge.csv";
+            string path = @"C:\\Users\\tpl\\Desktop\\主泵\\csv\\FaultKnowledge.csv";
             StreamReader sr = new StreamReader(path, Encoding.UTF8);
             sr.ReadLine();
             while (!sr.EndOfStream)

@@ -24,6 +24,8 @@ using Volo.Abp.Modularity;
 using Volo.Abp.UI.Navigation.Urls;
 using Volo.Abp.VirtualFileSystem;
 using PumpData.ReponseService;
+using Microsoft.AspNetCore.SignalR.Client;
+using PumpData.Books;
 
 namespace PumpData
 {
@@ -41,11 +43,14 @@ namespace PumpData
     public class PumpDataHttpApiHostModule : AbpModule
     {
         private const string DefaultCorsPolicyName = "Default";
+        public HubConnection connection { get; set;  }
 
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
             var configuration = context.Services.GetConfiguration();
             var hostingEnvironment = context.Services.GetHostingEnvironment();
+
+            context.Services.AddSingleton<IBookService, BookService>();
 
             ConfigureUrls(configuration);
             ConfigureConventionalControllers();
@@ -54,7 +59,10 @@ namespace PumpData
             ConfigureVirtualFileSystem(context);
             ConfigureCors(context, configuration);
             ConfigureSwaggerServices(context);
+            //ConfigureSignalR(context);
+
         }
+        
 
         private void ConfigureUrls(IConfiguration configuration)
         {
@@ -193,8 +201,25 @@ namespace PumpData
             app.UseAbpSerilogEnrichers();
             app.UseConfiguredEndpoints(endpoints=>
             {
-                endpoints.MapGrpcService<MyEmployeeService>();
+                endpoints.MapGrpcService<DataTransService>();
             });
+
+            var service = context.ServiceProvider.GetService<IBookService>();
+
+            connection = new HubConnectionBuilder()
+                .WithUrl("https://localhost:5001/Chat")
+                .Build();
+
+            // OperatingData
+            connection.On<Book>("ReceiveMessage", async (data) =>
+            {
+               //Console.WriteLine(data.Pressure1);
+                var s = await service.CreateAsync(new CreateUpdateBooksDto { 
+                    Pressure1 = data.Pressure1,                
+                });
+            });
+
+            connection.StartAsync();
         }
     }
 }

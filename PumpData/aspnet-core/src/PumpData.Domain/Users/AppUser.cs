@@ -1,4 +1,5 @@
-﻿using System;
+using System;
+using Volo.Abp.Auditing;
 using Volo.Abp.Domain.Entities.Auditing;
 using Volo.Abp.Users;
 
@@ -12,6 +13,7 @@ namespace PumpData.Users
      * - You can query users from database with this entity.
      * - You can update values of your custom properties.
      */
+    [Audited]
     public class AppUser : FullAuditedAggregateRoot<Guid>, IUser
     {
         #region Base properties
@@ -21,7 +23,7 @@ namespace PumpData.Users
          * services (like IdentityUserManager) to change them.
          * So, this properties are designed as read only!
          */
-
+        [DisableAuditing]
         public virtual Guid? TenantId { get; private set; }
 
         public virtual string UserName { get; private set; }

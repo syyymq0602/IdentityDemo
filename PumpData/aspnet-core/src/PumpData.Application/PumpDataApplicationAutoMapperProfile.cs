@@ -1,8 +1,11 @@
-﻿using AutoMapper;
+using AutoMapper;
+using PumpData.Books;
 using PumpData.DiagnosticMessage;
 using PumpData.EquipmentInformations;
 using PumpData.FaultKnowledge;
 using PumpData.RealTimeParam;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace PumpData
 {
@@ -24,6 +27,9 @@ namespace PumpData
 
             CreateMap<Parameter, ParameterDto>();
             CreateMap<CreateUpdateParameterDto,Parameter>();
+
+            CreateMap<Book, BookDto>();
+            CreateMap<CreateUpdateBooksDto,Book>();
                 
         }
     }

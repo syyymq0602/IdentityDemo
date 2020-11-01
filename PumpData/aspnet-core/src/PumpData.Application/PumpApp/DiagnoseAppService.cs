@@ -1,4 +1,4 @@
-﻿using PumpData.DiagnosticMessage;
+using PumpData.DiagnosticMessage;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -31,6 +31,14 @@ namespace PumpData.PumpApp
                .FirstOrDefault(diagnose => diagnose.D_id == input);
 
             return ObjectMapper.Map<Diagnose, DiagnoseDto>(diagnose);
+        }
+
+        public async Task UpdateDiaAsync(Guid id, CreateUpdateDiagnoseDto input)
+        {
+            var dia = await Repository.GetAsync(id);
+            //Automatically set properties of the user object using the UpdateUserInput
+            ObjectMapper.Map(input,dia);
+            await Repository.UpdateAsync(dia);
         }
     }
 }

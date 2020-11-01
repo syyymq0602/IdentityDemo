@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,7 +22,7 @@ namespace PumpData.EquipmentInformations
         {
             string line;
             // 定义文件绝对路径
-            string path = @"C:\\Users\\tpl\\Desktop\\主泵\\pump\\csv\\EquipmentInformation.csv";
+            string path = @"C:\\Users\\tpl\\Desktop\\主泵\\csv\\EquipmentInformation.csv";
             StreamReader sr = new StreamReader(path, Encoding.UTF8);
             sr.ReadLine();
             while (!sr.EndOfStream)
