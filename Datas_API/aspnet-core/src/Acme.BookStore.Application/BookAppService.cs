@@ -1,41 +1,40 @@
 ﻿using Acme.BookStore.Books;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
+using Volo.Abp.DependencyInjection;
 using Volo.Abp.Domain.Repositories;
+using Volo.Abp.Linq;
 
 namespace Acme.BookStore
 {
     public class BookAppService :
-            
-            CrudAppService<Datas, DatasDto, Guid, PagedAndSortedResultRequestDto, CreateUpdateDataDto, CreateUpdateDataDto>, 
-
-            IBookAppService
+            AbstractKeyCrudAppService<Datas, DatasDto, DataKey, PagedResultRequestDto, CreateUpdateDataDto, CreateUpdateDataDto>
     {
-        public BookAppService(IRepository<Datas,Guid> repository): base(repository)
+        private readonly IAsyncQueryableProvider _providers;
+        public BookAppService(IRepository<Datas> repository, IAsyncQueryableProvider providers) : base(repository)
         {
-
+            _providers = providers;
         }
-        protected override IQueryable<Datas> ApplyPaging(IQueryable<Datas> query, PagedAndSortedResultRequestDto input)
+        
+        
+        protected override async Task DeleteByIdAsync(DataKey id)
         {
-            input.SkipCount = 0;
-            input.MaxResultCount = 10;
-            query = query.OrderBy(data => data.Id);
-            return base.ApplyPaging(query,input);
+            var data = Repository.DeleteAsync(d => d.datas == id.data);
+            await data;
         }
-        public override Task<DatasDto> CreateAsync(CreateUpdateDataDto input)
+        
+        protected override async Task<Datas> GetEntityByIdAsync(DataKey id)
         {
-            input.datas.CompareTo(0.0034);
-            return base.CreateAsync(input);
-        }
-        public override Task<PagedResultDto<DatasDto>> GetListAsync(PagedAndSortedResultRequestDto input)
-        {
-            return base.GetListAsync(input);
+            return await _providers.FirstOrDefaultAsync(
+                Repository.Where(d => d.datas == id.data)
+            );
         }
     }
 }

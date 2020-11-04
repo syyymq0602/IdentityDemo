@@ -9,7 +9,7 @@ namespace Acme.BookStore.Books
         ICrudAppService< //Defines CRUD methods
             DatasDto, //Used to show books
             Guid, //Primary key of the book entity
-            PagedAndSortedResultRequestDto, //Used for paging/sorting
+            PagedResultRequestDto, //Used for paging/sorting
             CreateUpdateDataDto> //Used to create/update a book
     {
 
