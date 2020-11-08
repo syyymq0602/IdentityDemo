@@ -7,6 +7,7 @@ namespace PumpData.RealTimeParam
 {
     public class ParameterKey
     {
-        public BsonTimestamp id{ get; set; }
+        // public BsonTimestamp id{ get; set; }
+        public double P_vibration_X { get; set; }
     }
 }

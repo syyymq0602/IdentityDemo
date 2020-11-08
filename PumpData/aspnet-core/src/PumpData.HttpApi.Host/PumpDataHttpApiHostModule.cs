@@ -23,9 +23,9 @@ using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
 using Volo.Abp.UI.Navigation.Urls;
 using Volo.Abp.VirtualFileSystem;
-using PumpData.ReponseService;
 using Microsoft.AspNetCore.SignalR.Client;
 using PumpData.Books;
+using Volo.Abp.Domain.Repositories;
 
 namespace PumpData
 {
@@ -50,7 +50,7 @@ namespace PumpData
             var configuration = context.Services.GetConfiguration();
             var hostingEnvironment = context.Services.GetHostingEnvironment();
 
-            context.Services.AddSingleton<IBookService, BookService>();
+            // context.Services.AddSingleton<IBookService, BookService>();
 
             ConfigureUrls(configuration);
             ConfigureConventionalControllers();
@@ -201,7 +201,7 @@ namespace PumpData
             app.UseAbpSerilogEnrichers();
             app.UseConfiguredEndpoints(endpoints=>
             {
-                endpoints.MapGrpcService<DataTransService>();
+                
             });
 
             var service = context.ServiceProvider.GetService<IBookService>();
@@ -210,7 +210,6 @@ namespace PumpData
                 .WithUrl("https://localhost:5001/Chat")
                 .Build();
 
-            // OperatingData
             connection.On<Book>("ReceiveMessage", async (data) =>
             {
                //Console.WriteLine(data.Pressure1);

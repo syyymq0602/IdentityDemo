@@ -22,35 +22,37 @@ namespace PumpData.PumpApp
         {
             _providers = providers;
         }
-        /*
-        public async Task<ParameterDto> FindParaAsync(DateTime input)
-        {
-            var paras = await Repository.GetListAsync();
-            var para =  paras.FirstOrDefault(para => para.P_date == input);
 
-            return ObjectMapper.Map<Parameter,ParameterDto>(para);
-        }
+        //public async Task<ParameterDto> FindParaAsync(DateTime input)
+        //{
+        //    var paras = await Repository.GetListAsync();
+        //    var para =  paras.FirstOrDefault(para => para.P_date == input);
+
+        //    return ObjectMapper.Map<Parameter,ParameterDto>(para);
+        //}
         // 排序
-        protected override IQueryable<Parameter> ApplyDefaultSorting(IQueryable<Parameter> query)
-        {
-            // Id排序为mongodb数据库顺序
-            // var paras = query.OrderBy(para => para.Id);
-            var paras = query.OrderBy(para => para.Id);
-            return paras;
-        }
-        */
+        //protected override IQueryable<Parameter> ApplyDefaultSorting(IQueryable<Parameter> query)
+        //{
+        //    // Id排序为mongodb数据库顺序
+        //    // var paras = query.OrderBy(para => para.Id);
+        //    var paras = query.OrderBy(para => para.Id);
+        //    return paras;
+        //}
+
+
         protected override async Task DeleteByIdAsync(ParameterKey id)
         {
-            var data = Repository.DeleteAsync(d => d.Id == id.id);
+            var data = Repository.DeleteAsync(d => d.P_vibration_X == id.P_vibration_X );
             await data;
         }
 
         protected override async Task<Parameter> GetEntityByIdAsync(ParameterKey id)
         {
             return await _providers.FirstOrDefaultAsync(
-                Repository.Where(d => d.Id == id.id)
+                Repository.Where(d => d.P_vibration_X == id.P_vibration_X)
             );
         }
+
         protected override IQueryable<Parameter> ApplySorting(IQueryable<Parameter> query, PagedAndSortedResultRequestDto input)
         {
             input.SkipCount = 0;

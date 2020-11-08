@@ -1,4 +1,5 @@
 using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,6 +9,7 @@ namespace PumpData.RealTimeParam
 {
     public class ParameterDto : EntityDto
     {
+        public DateTime Time { get; set; }
         public double P_vibration_X { get; set; }
         public double P_vibration_Y { get; set; }
         public double P_Motor_Displacement_X { get; set; }

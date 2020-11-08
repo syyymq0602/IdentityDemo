@@ -9,7 +9,6 @@ namespace PumpData
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddGrpc();
             // services.AddSignalR();
             services.AddApplication<PumpDataHttpApiHostModule>();
         }

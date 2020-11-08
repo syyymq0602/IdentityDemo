@@ -9,7 +9,6 @@ namespace PumpData.RealTimeParam
 {
     public class Parameter : AggregateRoot<BsonTimestamp>
     {
-        [Key]
         public override BsonTimestamp Id { get; protected set; }
         public double P_vibration_X { get; set; }
         public double P_vibration_Y { get; set; }

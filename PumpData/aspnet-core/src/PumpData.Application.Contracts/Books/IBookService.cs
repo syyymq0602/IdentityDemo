@@ -1,3 +1,4 @@
+using MongoDB.Bson;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -14,6 +15,6 @@ namespace PumpData.Books
             PagedAndSortedResultRequestDto, //Used for paging/sorting
             CreateUpdateBooksDto> //Used to create/update a book
     {
-        Task<double> GetPressure(Guid pre);
+        // Task<double> GetPressure(Guid pre);
     }
 }

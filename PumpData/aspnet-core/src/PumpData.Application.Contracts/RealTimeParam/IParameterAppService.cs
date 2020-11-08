@@ -1,3 +1,4 @@
+using MongoDB.Bson;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +11,10 @@ namespace PumpData.RealTimeParam
     public interface IParameterAppService :
         ICrudAppService< //Defines CRUD methods
             ParameterDto, //Used to show books
-            Guid, //Primary key of the book entity
+            BsonTimestamp, //Primary key of the book entity
             PagedAndSortedResultRequestDto, //Used for paging/sorting
             CreateUpdateParameterDto> //Used to create/update a book
     {
-        Task<ParameterDto> FindParaAsync(DateTime input);
+        //Task<ParameterDto> FindParaAsync(DateTime input);
     }
 }

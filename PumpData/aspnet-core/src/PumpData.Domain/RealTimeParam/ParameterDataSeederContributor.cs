@@ -13,9 +13,9 @@ namespace PumpData.RealTimeParam
     public class ParameterDataSeederContributor 
         : IDataSeedContributor, ITransientDependency
     {
-        private readonly IRepository<Parameter, BsonTimestamp> _parameterRepository;
+        private readonly IRepository<Parameter> _parameterRepository;
 
-        public ParameterDataSeederContributor(IRepository<Parameter, BsonTimestamp> parameterRepository)
+        public ParameterDataSeederContributor(IRepository<Parameter> parameterRepository)
         {
             _parameterRepository = parameterRepository;
         }
