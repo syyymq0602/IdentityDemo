@@ -27,7 +27,6 @@ namespace PumpData.PumpApp
         //{
         //    var paras = await Repository.GetListAsync();
         //    var para =  paras.FirstOrDefault(para => para.P_date == input);
-
         //    return ObjectMapper.Map<Parameter,ParameterDto>(para);
         //}
         // 排序
@@ -55,10 +54,15 @@ namespace PumpData.PumpApp
 
         protected override IQueryable<Parameter> ApplySorting(IQueryable<Parameter> query, PagedAndSortedResultRequestDto input)
         {
-            input.SkipCount = 0;
-            input.MaxResultCount = 12;
             query = query.OrderBy(p => p.Id);
             return query;
+        }
+        public override Task<PagedResultDto<ParameterDto>> GetListAsync(PagedAndSortedResultRequestDto input)
+        {
+            var para = Repository.FirstOrDefault(p => p.P_vibration_X == 1493);
+            var convert = ObjectMapper.Map<Parameter,ParameterDto>(para);
+            Console.WriteLine(convert.Time);
+            return base.GetListAsync(input);
         }
     }
 }

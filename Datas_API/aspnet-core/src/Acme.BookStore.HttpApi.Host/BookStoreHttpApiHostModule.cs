@@ -120,7 +120,7 @@ namespace Acme.BookStore
                 options.Languages.Add(new LanguageInfo("zh-Hant", "zh-Hant", "繁體中文"));
             });
         }
-
+        /*
         private void ConfigureRedis(
             ServiceConfigurationContext context,
             IConfiguration configuration,
@@ -134,7 +134,7 @@ namespace Acme.BookStore
                     .PersistKeysToStackExchangeRedis(redis, "BookStore-Protection-Keys");
             }
         }
-
+        */
         private void ConfigureCors(ServiceConfigurationContext context, IConfiguration configuration)
         {
             context.Services.AddCors(options =>

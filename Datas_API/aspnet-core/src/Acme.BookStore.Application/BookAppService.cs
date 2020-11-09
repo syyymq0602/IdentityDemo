@@ -15,18 +15,17 @@ using Volo.Abp.Linq;
 namespace Acme.BookStore
 {
     public class BookAppService :
-            AbstractKeyCrudAppService<Datas, DatasDto, DataKey, PagedResultRequestDto, CreateUpdateDataDto, CreateUpdateDataDto>
+            AbstractKeyCrudAppService<Datas, DatasDto, DataKey, PagedAndSortedResultRequestDto, CreateUpdateDataDto, CreateUpdateDataDto>
     {
         private readonly IAsyncQueryableProvider _providers;
         public BookAppService(IRepository<Datas> repository, IAsyncQueryableProvider providers) : base(repository)
         {
             _providers = providers;
         }
-        
-        
+               
         protected override async Task DeleteByIdAsync(DataKey id)
         {
-            var data = Repository.DeleteAsync(d => d.datas == id.data);
+            var data = Repository.DeleteAsync(d => d.datas == id.data );
             await data;
         }
         
@@ -35,6 +34,13 @@ namespace Acme.BookStore
             return await _providers.FirstOrDefaultAsync(
                 Repository.Where(d => d.datas == id.data)
             );
+        }
+        protected override IQueryable<Datas> ApplySorting(IQueryable<Datas> query, PagedAndSortedResultRequestDto input)
+        {
+            input.SkipCount = 0;
+            input.MaxResultCount = 12;
+            query = query.OrderBy(p => p.Id);
+            return query;
         }
     }
 }

@@ -1,0 +1,29 @@
+{
+  "version": 2,
+  "dgSpecHash": "DuUxxQsSjubAtyw65HKmjKhy3Usm3MkqrpktflZUoDKN2hWzkSXH9QQrr1EuHuXnq9rmeCDhlwp9Dahehcqx7Q==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\tpl\\Desktop\\kouzou\\NewDiagnostic_FFT\\Diagnostic\\Diagnostic.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\tpl\\.nuget\\packages\\mathnet.numerics\\4.12.0\\mathnet.numerics.4.12.0.nupkg.sha512",
+    "C:\\Users\\tpl\\.nuget\\packages\\microsoft.aspnetcore.connections.abstractions\\3.1.9\\microsoft.aspnetcore.connections.abstractions.3.1.9.nupkg.sha512",
+    "C:\\Users\\tpl\\.nuget\\packages\\microsoft.aspnetcore.http.connections.client\\3.1.9\\microsoft.aspnetcore.http.connections.client.3.1.9.nupkg.sha512",
+    "C:\\Users\\tpl\\.nuget\\packages\\microsoft.aspnetcore.http.connections.common\\3.1.9\\microsoft.aspnetcore.http.connections.common.3.1.9.nupkg.sha512",
+    "C:\\Users\\tpl\\.nuget\\packages\\microsoft.aspnetcore.http.features\\3.1.9\\microsoft.aspnetcore.http.features.3.1.9.nupkg.sha512",
+    "C:\\Users\\tpl\\.nuget\\packages\\microsoft.aspnetcore.signalr.client\\3.1.9\\microsoft.aspnetcore.signalr.client.3.1.9.nupkg.sha512",
+    "C:\\Users\\tpl\\.nuget\\packages\\microsoft.aspnetcore.signalr.client.core\\3.1.9\\microsoft.aspnetcore.signalr.client.core.3.1.9.nupkg.sha512",
+    "C:\\Users\\tpl\\.nuget\\packages\\microsoft.aspnetcore.signalr.common\\3.1.9\\microsoft.aspnetcore.signalr.common.3.1.9.nupkg.sha512",
+    "C:\\Users\\tpl\\.nuget\\packages\\microsoft.aspnetcore.signalr.protocols.json\\3.1.9\\microsoft.aspnetcore.signalr.protocols.json.3.1.9.nupkg.sha512",
+    "C:\\Users\\tpl\\.nuget\\packages\\microsoft.extensions.configuration\\3.1.9\\microsoft.extensions.configuration.3.1.9.nupkg.sha512",
+    "C:\\Users\\tpl\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\3.1.9\\microsoft.extensions.configuration.abstractions.3.1.9.nupkg.sha512",
+    "C:\\Users\\tpl\\.nuget\\packages\\microsoft.extensions.configuration.binder\\3.1.9\\microsoft.extensions.configuration.binder.3.1.9.nupkg.sha512",
+    "C:\\Users\\tpl\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\3.1.9\\microsoft.extensions.dependencyinjection.3.1.9.nupkg.sha512",
+    "C:\\Users\\tpl\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\3.1.9\\microsoft.extensions.dependencyinjection.abstractions.3.1.9.nupkg.sha512",
+    "C:\\Users\\tpl\\.nuget\\packages\\microsoft.extensions.logging\\3.1.9\\microsoft.extensions.logging.3.1.9.nupkg.sha512",
+    "C:\\Users\\tpl\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\3.1.9\\microsoft.extensions.logging.abstractions.3.1.9.nupkg.sha512",
+    "C:\\Users\\tpl\\.nuget\\packages\\microsoft.extensions.options\\3.1.9\\microsoft.extensions.options.3.1.9.nupkg.sha512",
+    "C:\\Users\\tpl\\.nuget\\packages\\microsoft.extensions.primitives\\3.1.9\\microsoft.extensions.primitives.3.1.9.nupkg.sha512",
+    "C:\\Users\\tpl\\.nuget\\packages\\system.io.pipelines\\4.7.3\\system.io.pipelines.4.7.3.nupkg.sha512",
+    "C:\\Users\\tpl\\.nuget\\packages\\system.threading.channels\\4.7.1\\system.threading.channels.4.7.1.nupkg.sha512"
+  ],
+  "logs": []
+}

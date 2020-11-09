@@ -1,12 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace quiz
 {
     public class Book 
     {
-        public decimal data { get; set; }
+        [BsonId]
+        [BsonRepresentation(BsonType.Timestamp)]
+        public BsonTimestamp time { get; set; }
+        public double data { get; set; }
 
     }
 }

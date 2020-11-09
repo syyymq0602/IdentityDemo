@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="3.1.9" />
+    <PackageReference Include="NPOI" Version="2.5.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Diagnostic">
+      <HintPath>..\Diagnostic\bin\Debug\netcoreapp3.1\Diagnostic.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
