@@ -9,17 +9,16 @@ namespace PumpData
 {
     public class CustomTypeConverter  : ITypeConverter<Parameter, ParameterDto>
     {
-        [Obsolete]
         public ParameterDto Convert(Parameter source, ParameterDto destination, ResolutionContext context)
         {
             var date = source.Id;
-            DateTime dtStart = TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970,1,1));
+            DateTime dtStart = TimeZoneInfo.ConvertTime(new DateTime(1970, 1, 1), TimeZoneInfo.Local);
             long lTime = long.Parse(date.ToString()+"0000000");
             TimeSpan toNow = new TimeSpan(lTime);
             var des= dtStart.Add(toNow);
             ParameterDto d = new ParameterDto
             {
-                Time = des,
+                Time = des.ToString(),
             };
             return d;
         }

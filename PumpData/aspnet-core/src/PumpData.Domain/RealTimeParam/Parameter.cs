@@ -7,9 +7,9 @@ using Volo.Abp.Domain.Entities;
 
 namespace PumpData.RealTimeParam
 {
-    public class Parameter : AggregateRoot<BsonTimestamp>
+    public class Parameter : AggregateRoot<string>
     {
-        public override BsonTimestamp Id { get; protected set; }
+        public override string Id { get; protected set; }
         public double P_vibration_X { get; set; }
         public double P_vibration_Y { get; set; }
         public double P_Motor_Displacement_X { get; set; }
@@ -49,13 +49,9 @@ namespace PumpData.RealTimeParam
         public double P_Seal_PositionMonitor { get; set; }
         public double P_Flywheel_PositionMonitor { get; set; }
 
-        public Parameter(BsonTimestamp id)
+        public Parameter(string id)
         {
             Id = id;
-        }
-        public Parameter()
-        {
-
         }
     }
 }

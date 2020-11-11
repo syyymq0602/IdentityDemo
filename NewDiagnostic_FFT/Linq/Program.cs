@@ -31,12 +31,12 @@ namespace Linq
             await connection.StartAsync();
             HttpClient client = new HttpClient();
             var data = await client
-                .GetAsync("https://localhost:44345/api/app/parameter?SkipCount=0&MaxResultCount=100");
+                .GetAsync("https://localhost:44345/api/app/parameter?MaxResultCount=10");
             var str = await data.Content.ReadAsStringAsync();
             //var sqr = str.ToDictionary();
             Point m = JsonConvert.DeserializeObject<Point>(str);
             foreach(PointInfo p in m.items){
-                await connection.SendAsync("SendMessageTime", p.Time);
+                await connection.SendAsync("SendMessageTime", 1.2);
                 DelayMillionSeconds(500);
                 Console.WriteLine(p.Time.TimeOfDay);
             }

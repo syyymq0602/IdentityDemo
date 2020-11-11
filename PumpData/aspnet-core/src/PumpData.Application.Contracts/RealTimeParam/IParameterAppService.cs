@@ -11,7 +11,7 @@ namespace PumpData.RealTimeParam
     public interface IParameterAppService :
         ICrudAppService< //Defines CRUD methods
             ParameterDto, //Used to show books
-            BsonTimestamp, //Primary key of the book entity
+            string, //Primary key of the book entity
             PagedAndSortedResultRequestDto, //Used for paging/sorting
             CreateUpdateParameterDto> //Used to create/update a book
     {

@@ -39,7 +39,7 @@ namespace PumpData.RealTimeParam
                 {
                     // 通过异步方法给对象赋值插入到数据库中
                     await _parameterRepository.InsertAsync(
-                        new Parameter(arr[0].ConvertToTimeStamp())
+                        new Parameter(arr[0])
                         {
                             P_vibration_X = Convert.ToDouble(arr[1]),
                             P_vibration_Y = Convert.ToDouble(arr[2]),

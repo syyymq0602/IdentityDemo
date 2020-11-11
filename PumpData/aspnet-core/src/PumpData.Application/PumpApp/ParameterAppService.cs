@@ -1,10 +1,7 @@
 using MongoDB.Bson;
 using PumpData.RealTimeParam;
 using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
@@ -13,14 +10,14 @@ using Volo.Abp.Linq;
 
 namespace PumpData.PumpApp
 {
+
     public class ParameterAppService :
-        AbstractKeyCrudAppService<Parameter, ParameterDto, ParameterKey, PagedAndSortedResultRequestDto, CreateUpdateParameterDto, CreateUpdateParameterDto>
+        CrudAppService<Parameter, ParameterDto, string, PagedAndSortedResultRequestDto, CreateUpdateParameterDto, CreateUpdateParameterDto>, IParameterAppService
     {
-        private readonly IAsyncQueryableProvider _providers;
-        public ParameterAppService(IRepository<Parameter> repository, IAsyncQueryableProvider providers)
+        public ParameterAppService(IRepository<Parameter, string> repository)
             : base(repository)
         {
-            _providers = providers;
+            
         }
 
         //public async Task<ParameterDto> FindParaAsync(DateTime input)
@@ -36,33 +33,25 @@ namespace PumpData.PumpApp
         //    // var paras = query.OrderBy(para => para.Id);
         //    var paras = query.OrderBy(para => para.Id);
         //    return paras;
+        ////}
+        //public override Task<ParameterDto> CreateAsync(CreateUpdateParameterDto input)
+        //{
+        //    return base.CreateAsync(input);
         //}
 
 
-        protected override async Task DeleteByIdAsync(ParameterKey id)
-        {
-            var data = Repository.DeleteAsync(d => d.P_vibration_X == id.P_vibration_X );
-            await data;
-        }
 
-        protected override async Task<Parameter> GetEntityByIdAsync(ParameterKey id)
-        {
-            return await _providers.FirstOrDefaultAsync(
-                Repository.Where(d => d.P_vibration_X == id.P_vibration_X)
-            );
-        }
-
-        protected override IQueryable<Parameter> ApplySorting(IQueryable<Parameter> query, PagedAndSortedResultRequestDto input)
-        {
-            query = query.OrderBy(p => p.Id);
-            return query;
-        }
-        public override Task<PagedResultDto<ParameterDto>> GetListAsync(PagedAndSortedResultRequestDto input)
-        {
-            var para = Repository.FirstOrDefault(p => p.P_vibration_X == 1493);
-            var convert = ObjectMapper.Map<Parameter,ParameterDto>(para);
-            Console.WriteLine(convert.Time);
-            return base.GetListAsync(input);
-        }
+        //protected override IQueryable<Parameter> ApplySorting(IQueryable<Parameter> query, PagedAndSortedResultRequestDto input)
+        //{
+        //    query = query.OrderBy(p => p.Id);
+        //    return query;
+        //}
+        //public override Task<PagedResultDto<ParameterDto>> GetListAsync(PagedAndSortedResultRequestDto input)
+        //{
+        //    var para = Repository.FirstOrDefault(p => p.P_vibration_X == 1493);
+        //    var convert = ObjectMapper.Map<Parameter,ParameterDto>(para);
+        //    Console.WriteLine(convert.Time);
+        //    return base.GetListAsync(input);
+        //}
     }
 }

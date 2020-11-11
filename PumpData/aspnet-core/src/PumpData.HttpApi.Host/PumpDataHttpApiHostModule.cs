@@ -26,6 +26,8 @@ using Volo.Abp.VirtualFileSystem;
 using Microsoft.AspNetCore.SignalR.Client;
 using PumpData.Books;
 using Volo.Abp.Domain.Repositories;
+using PumpData.PumpApp;
+using PumpData.RealTimeParam;
 
 namespace PumpData
 {
@@ -43,17 +45,16 @@ namespace PumpData
     public class PumpDataHttpApiHostModule : AbpModule
     {
         private const string DefaultCorsPolicyName = "Default";
-        public HubConnection connection { get; set;  }
-
+        
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
             var configuration = context.Services.GetConfiguration();
             var hostingEnvironment = context.Services.GetHostingEnvironment();
-
+            context.Services.AddSingleton<PumpDataClient>();
             // context.Services.AddSingleton<IBookService, BookService>();
 
             ConfigureUrls(configuration);
-            ConfigureConventionalControllers();
+            //ConfigureConventionalControllers();
             ConfigureAuthentication(context, configuration);
             ConfigureLocalization();
             ConfigureVirtualFileSystem(context);
@@ -199,26 +200,11 @@ namespace PumpData
 
             app.UseAuditing();
             app.UseAbpSerilogEnrichers();
-            app.UseConfiguredEndpoints(endpoints=>
+            app.UseConfiguredEndpoints(endpoints =>
             {
-                
+
             });
 
-            var service = context.ServiceProvider.GetService<IBookService>();
-
-            connection = new HubConnectionBuilder()
-                .WithUrl("https://localhost:5001/Chat")
-                .Build();
-
-            connection.On<Book>("ReceiveMessage", async (data) =>
-            {
-               //Console.WriteLine(data.Pressure1);
-                var s = await service.CreateAsync(new CreateUpdateBooksDto { 
-                    Pressure1 = data.Pressure1,                
-                });
-            });
-
-            connection.StartAsync();
         }
     }
 }

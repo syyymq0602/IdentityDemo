@@ -10,17 +10,17 @@ namespace ChatServer.Hubs
         //{
         //    await Clients.All.SendAsync("ReceiveMessage", e);
         //}
-        public async Task SendMessage(Data datas)
+        public async Task SendMessage(double datas)
         {
             await Clients.All.SendAsync("ReceiveMessage", datas);
-            Console.WriteLine(datas.num+"  "+datas.size);
+            Console.WriteLine(datas);
         }
         public async Task SendMessageBy(string user,string message)
         {
             await Clients.All.SendAsync("ReceiveMessageBy", user,message);
             Console.WriteLine(user + "    " + message);
         }
-        public async Task SendMessageTime(DateTime time)
+        public async Task SendMessageTime(double time)
         {
             await Clients.All.SendAsync("ReceiveTime", time);
             Console.WriteLine(time);

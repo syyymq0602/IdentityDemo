@@ -14,24 +14,18 @@ namespace SignalRClient
                 .WithUrl("https://localhost:5001/Chat")
                 .WithAutomaticReconnect()
                 .Build();
-
             connection.On<string, string>("ReceiveMessageBy",(user, message) =>
             {
                 Console.WriteLine("recived!");
             });
-
             connection.Closed += async error => {
                 // Do your close logic.
                 Console.WriteLine("Connection is closed.");
-                await Task.Delay(new Random().Next(0, 5) * 1000);
             };
-
             await connection.StartAsync();
-
             await connection.SendAsync("SendMessageBy", "Kity", "bear");
 
             Data data = new Data();
-
             for(int i=0;i<200;i++)
             {
                 if (DelayMillionSeconds(500))

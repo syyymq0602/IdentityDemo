@@ -11,6 +11,7 @@ namespace PumpData
         {
             // services.AddSignalR();
             services.AddApplication<PumpDataHttpApiHostModule>();
+            
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)

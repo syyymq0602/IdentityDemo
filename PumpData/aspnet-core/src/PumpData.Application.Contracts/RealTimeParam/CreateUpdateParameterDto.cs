@@ -7,7 +7,7 @@ namespace PumpData.RealTimeParam
 {
     public class CreateUpdateParameterDto
     {
-        public DateTime Time { get; set; }
+        public string Time { get; set; }
         public double P_vibration_X { get; set; }
         public double P_vibration_Y { get; set; }
         public double P_Motor_Displacement_X { get; set; }
