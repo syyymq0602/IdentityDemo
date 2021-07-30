@@ -21,9 +21,6 @@ namespace BooksAppStore
     )]
     public class BooksAppStoreApplicationContractsModule : AbpModule
     {
-        public override void PreConfigureServices(ServiceConfigurationContext context)
-        {
-            BooksAppStoreDtoExtensions.Configure();
-        }
+        
     }
 }
