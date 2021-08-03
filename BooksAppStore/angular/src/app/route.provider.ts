@@ -14,7 +14,21 @@ function configureRoutes(routesService: RoutesService) {
         iconClass: 'fas fa-home',
         order: 1,
         layout: eLayoutType.application,
+        invisible:false
       },
+      {
+        path:'/book-store',
+        name: '::Menu:BookStore',
+        iconClass: 'fa fa-cog fa-spin',
+        order:2,
+        layout:eLayoutType.application,
+      },
+      {
+        path:'/books',
+        name:'::Menu:Books',
+        parentName:'::Menu:BookStore',
+        layout:eLayoutType.application
+      }
     ]);
   };
 }

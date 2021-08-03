@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   application: {
     baseUrl,
-    name: 'BooksAppStore',
+    name: 'BooksApp',
     logoUrl: '',
   },
   oAuthConfig: {
