@@ -6,6 +6,7 @@
     "LongWelcomeMessage": "Welcome to the application. This is a startup project based on the ABP framework. ",
     "Menu:BookStore": "Book Store",
     "Menu:Books": "Books",
+    "Menu:Authors": "Books",
     "Actions": "Actions",
     "Close": "Close",
     "Delete": "Delete",
