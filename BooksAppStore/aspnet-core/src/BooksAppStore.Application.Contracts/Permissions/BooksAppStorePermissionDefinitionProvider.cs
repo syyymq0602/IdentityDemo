@@ -8,10 +8,12 @@ namespace BooksAppStore.Permissions
     {
         public override void Define(IPermissionDefinitionContext context)
         {
-            var myGroup = context.AddGroup(BooksAppStorePermissions.GroupName);
+            var booksGroup = context.AddGroup(BooksAppStorePermissions.GroupName);
 
-            //Define your own permissions here. Example:
-            //myGroup.AddPermission(BooksAppStorePermissions.MyPermission1, L("Permission:MyPermission1"));
+            var booksPermission = booksGroup.AddPermission(BooksAppStorePermissions.Books.Default, L("Permission:Books"));
+            booksPermission.AddChild(BooksAppStorePermissions.Books.Create, L("Permission:Books.Create"));
+            booksPermission.AddChild(BooksAppStorePermissions.Books.Edit, L("Permission:Books.Edit"));
+            booksPermission.AddChild(BooksAppStorePermissions.Books.Delete, L("Permission:Books.Delete"));
         }
 
         private static LocalizableString L(string name)
