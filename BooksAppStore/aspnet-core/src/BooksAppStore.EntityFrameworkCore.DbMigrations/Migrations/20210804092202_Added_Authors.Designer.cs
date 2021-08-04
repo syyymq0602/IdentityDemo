@@ -3,15 +3,17 @@ using System;
 using BooksAppStore.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Volo.Abp.EntityFrameworkCore;
 
 namespace BooksAppStore.Migrations
 {
     [DbContext(typeof(BooksAppStoreMigrationsDbContext))]
-    partial class BooksAppStoreMigrationsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210804092202_Added_Authors")]
+    partial class Added_Authors
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

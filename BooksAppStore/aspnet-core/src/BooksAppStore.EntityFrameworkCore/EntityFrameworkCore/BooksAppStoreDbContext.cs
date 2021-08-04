@@ -1,4 +1,5 @@
-﻿using BooksAppStore.DomainBooks;
+﻿using BooksAppStore.DomainAuthors;
+using BooksAppStore.DomainBooks;
 using Microsoft.EntityFrameworkCore;
 using BooksAppStore.Users;
 using Volo.Abp.Data;
@@ -24,6 +25,8 @@ namespace BooksAppStore.EntityFrameworkCore
         public DbSet<AppUser> Users { get; set; }
 
         public DbSet<Book> Books { get; set; }
+        
+        public DbSet<Author> Authors { get; set; }
         /* Add DbSet properties for your Aggregate Roots / Entities here.
          * Also map them inside BooksAppStoreDbContextModelCreatingExtensions.ConfigureBooksAppStore
          */

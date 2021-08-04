@@ -1,4 +1,6 @@
-﻿using BooksAppStore.DomainBooks;
+﻿using BooksAppStore.DomainAuthors;
+using BooksAppStore.DomainBooks;
+using BooksAppStore.DomainSharedAuthors;
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp;
 using Volo.Abp.EntityFrameworkCore.Modeling;
@@ -26,6 +28,20 @@ namespace BooksAppStore.EntityFrameworkCore
                     BooksAppStoreConsts.DbSchema);
                 b.ConfigureByConvention(); //auto configure for the base class props
                 b.Property(x => x.Name).IsRequired().HasMaxLength(128);
+            });
+            
+            builder.Entity<Author>(b =>
+            {
+                b.ToTable(BooksAppStoreConsts.DbTablePrefix + "Authors",
+                    BooksAppStoreConsts.DbSchema);
+    
+                b.ConfigureByConvention();
+    
+                b.Property(x => x.Name)
+                    .IsRequired()
+                    .HasMaxLength(AuthorConsts.MaxNameLength);
+
+                b.HasIndex(x => x.Name);
             });
         }
     }
