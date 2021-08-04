@@ -2,6 +2,7 @@
 using BooksAppStore.BooksContracts;
 using BooksAppStore.BooksContracts.DTOs;
 using BooksAppStore.DomainBooks;
+using BooksAppStore.Permissions;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
 using Volo.Abp.Domain.Repositories;
@@ -19,7 +20,11 @@ namespace BooksAppStore.AppServices
         public BookAppService(IRepository<Book, Guid> repository)
             : base(repository)
         {
-
+            GetPolicyName = BooksAppStorePermissions.Books.Default;
+            GetListPolicyName = BooksAppStorePermissions.Books.Default;
+            CreatePolicyName = BooksAppStorePermissions.Books.Create;
+            UpdatePolicyName = BooksAppStorePermissions.Books.Edit;
+            DeletePolicyName = BooksAppStorePermissions.Books.Delete;
         }
     }
 }
