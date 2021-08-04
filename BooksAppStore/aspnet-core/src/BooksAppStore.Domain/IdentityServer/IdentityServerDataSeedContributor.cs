@@ -137,9 +137,11 @@ namespace BooksAppStore.IdentityServer
                 "role",
                 "phone",
                 "address",
+                "offline_access",
                 "BooksAppStore"
             };
 
+            var ss = _configuration;
             var configurationSection = _configuration.GetSection("IdentityServer:Clients");
 
 
