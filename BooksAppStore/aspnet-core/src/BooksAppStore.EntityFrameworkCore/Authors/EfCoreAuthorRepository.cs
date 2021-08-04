@@ -41,7 +41,6 @@ namespace BooksAppStore.Authors
                     author => author.Name.Contains(filter)
                 )
                 .OrderBy(ParsingConfig.Default,sorting)
-                // .OrderBy(a=>a.Name)
                 .Skip(skipCount)
                 .Take(maxResultCount)
                 .ToListAsync();
