@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using System.Threading.Tasks;
 using BooksAppStore.BooksContracts;
 using BooksAppStore.BooksContracts.DTOs;
 using BooksAppStore.DomainBooks;
@@ -25,6 +27,11 @@ namespace BooksAppStore.AppServices
             CreatePolicyName = BooksAppStorePermissions.Books.Create;
             UpdatePolicyName = BooksAppStorePermissions.Books.Edit;
             DeletePolicyName = BooksAppStorePermissions.Books.Delete;
+        }
+
+        public override Task<PagedResultDto<BookDto>> GetListAsync(PagedAndSortedResultRequestDto input)
+        {
+            return base.GetListAsync(input);
         }
     }
 }

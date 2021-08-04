@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Dynamic.Core;
 using System.Threading.Tasks;
 using BooksAppStore.DomainAuthors;
 using BooksAppStore.EntityFrameworkCore;
@@ -39,7 +40,8 @@ namespace BooksAppStore.Authors
                     !filter.IsNullOrWhiteSpace(),
                     author => author.Name.Contains(filter)
                 )
-                .OrderBy(a=>a.GetType().GetProperty(sorting))
+                .OrderBy(ParsingConfig.Default,sorting)
+                // .OrderBy(a=>a.Name)
                 .Skip(skipCount)
                 .Take(maxResultCount)
                 .ToListAsync();
