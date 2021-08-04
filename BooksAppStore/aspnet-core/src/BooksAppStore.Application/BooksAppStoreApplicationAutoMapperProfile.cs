@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
+using BooksAppStore.Authors.DTOs;
 using BooksAppStore.BooksContracts.DTOs;
+using BooksAppStore.DomainAuthors;
 using BooksAppStore.DomainBooks;
 
 namespace BooksAppStore
@@ -13,6 +15,8 @@ namespace BooksAppStore
              * into multiple profile classes for a better organization. */
             CreateMap<Book, BookDto>();
             CreateMap<CreateUpdateBookDto, Book>();
+            
+            CreateMap<Author, AuthorDto>();
         }
     }
 }
