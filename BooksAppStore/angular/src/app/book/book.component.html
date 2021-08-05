@@ -45,6 +45,11 @@
         </ng-template>
       </ngx-datatable-column>      
       <ngx-datatable-column [name]="'::Name' | abpLocalization" prop="name"></ngx-datatable-column>
+      <ngx-datatable-column
+        [name]="'::Author' | abpLocalization"
+        prop="authorName"
+        [sortable]="false"
+      ></ngx-datatable-column>
       <ngx-datatable-column [name]="'::Type' | abpLocalization" prop="type">
         <ng-template let-row="row" ngx-datatable-cell-template>
           {{ '::Enum:BookType:' + row.type | abpLocalization }}
@@ -75,7 +80,15 @@
             <label for="book-name">Name</label><span> * </span>
             <input type="text" id="book-name" class="form-control" formControlName="name" autofocus />
           </div>
-      
+          <div class="form-group">
+            <label for="author-id">Author</label><span> * </span>
+            <select class="form-control" id="author-id" formControlName="authorId">
+              <option [ngValue]="null">Select author</option>
+              <option [ngValue]="author.id" *ngFor="let author of authors$ | async">
+                {{ author.name }}
+              </option>
+            </select>
+          </div>
           <div class="form-group">
             <label for="book-price">Price</label><span> * </span>
             <input type="number" id="book-price" class="form-control" formControlName="price" />

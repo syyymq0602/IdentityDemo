@@ -1,17 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { BookService } from '@proxy/app-services';
-import { BookDto } from '@proxy/books-contracts/dtos';
+import { BookDto, AuthorLookupDto } from '@proxy/books-contracts/dtos';
 import { ListService, PagedResultDto } from '@abp/ng.core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { bookTypeOptions } from '@proxy/domain-shared-books';
 import { NgbDateNativeAdapter, NgbDateAdapter } from '@ng-bootstrap/ng-bootstrap';
 import { ConfirmationService, Confirmation } from '@abp/ng.theme.shared';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-book',
   templateUrl: './book.component.html',
   styleUrls: ['./book.component.scss'],
-  providers: [ListService,
+  providers: [
+    ListService,
     { provide: NgbDateAdapter, useClass: NgbDateNativeAdapter }
   ],
 })
@@ -29,12 +32,16 @@ export class BookComponent implements OnInit {
 
   selectedBook = {} as BookDto;
 
+  authors$: Observable<AuthorLookupDto[]>;
+
   constructor(
       public readonly list:ListService, 
       private bookService: BookService,
       private fb: FormBuilder,
       private confirmation: ConfirmationService
-    ) { }
+    ) { 
+      this.authors$ = bookService.getAuthorLookup().pipe(map((r) => r.items));
+    }
 
   ngOnInit(): void {
     const bookStreamCreator = (query) => this.bookService.getList(query);
@@ -60,6 +67,7 @@ export class BookComponent implements OnInit {
 
   buildForm() {
     this.form = this.fb.group({
+      authorId: [this.selectedBook.authorId || null, Validators.required],
       name: [this.selectedBook.name || '', Validators.required],
       type: [this.selectedBook.type || null, Validators.required],
       publishDate: [
