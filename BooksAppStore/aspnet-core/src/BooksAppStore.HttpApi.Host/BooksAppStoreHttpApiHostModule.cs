@@ -227,8 +227,8 @@ namespace BooksAppStore
             AsyncHelper.RunSync(async () =>
             {
                 var flagPath = Path.Combine(Directory.GetCurrentDirectory(), "Migrated.txt");
-                if(File.Exists(flagPath)) 
-                    return;
+                // if(File.Exists(flagPath)) 
+                //     return;
                 using var scope = context.ServiceProvider.CreateScope();
                 await scope.ServiceProvider
                     .GetRequiredService<BooksAppStoreMigrationsDbContext>()

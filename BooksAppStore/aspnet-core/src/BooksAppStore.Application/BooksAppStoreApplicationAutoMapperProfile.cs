@@ -17,6 +17,7 @@ namespace BooksAppStore
             CreateMap<CreateUpdateBookDto, Book>();
             
             CreateMap<Author, AuthorDto>();
+            CreateMap<Author, AuthorLookupDto>();
         }
     }
 }

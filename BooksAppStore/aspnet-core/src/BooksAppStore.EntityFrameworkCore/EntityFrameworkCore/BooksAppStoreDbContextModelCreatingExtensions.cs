@@ -26,8 +26,10 @@ namespace BooksAppStore.EntityFrameworkCore
             {
                 b.ToTable(BooksAppStoreConsts.DbTablePrefix + "Books",
                     BooksAppStoreConsts.DbSchema);
-                b.ConfigureByConvention(); //auto configure for the base class props
+                b.ConfigureByConvention(); 
                 b.Property(x => x.Name).IsRequired().HasMaxLength(128);
+                
+                b.HasOne<Author>().WithMany().HasForeignKey(x => x.AuthorId).IsRequired();
             });
             
             builder.Entity<Author>(b =>

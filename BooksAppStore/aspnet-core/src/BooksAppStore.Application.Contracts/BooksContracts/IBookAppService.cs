@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using BooksAppStore.BooksContracts.DTOs;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
@@ -12,6 +13,6 @@ namespace BooksAppStore.BooksContracts
             PagedAndSortedResultRequestDto, //Used for paging/sorting
             CreateUpdateBookDto> //Used to create/update a book
     {
-        
+        Task<ListResultDto<AuthorLookupDto>> GetAuthorLookupAsync();
     }
 }
