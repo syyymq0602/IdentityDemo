@@ -4,6 +4,7 @@
 
 using IdentityServer4.Models;
 using System.Collections.Generic;
+using IdentityServer4;
 
 namespace IdentityServer
 {
@@ -14,13 +15,27 @@ namespace IdentityServer
             {
                 new IdentityResources.OpenId(),
                 new IdentityResources.Profile(),
+                new IdentityResources.Email(),
+                new IdentityResources.Phone()
             };
 
         public static IEnumerable<ApiScope> ApiScopes =>
             new ApiScope[]
             {
                 new ApiScope("scope1"),
-                new ApiScope("scope2"),
+                new ApiScope("api1", "My API"),
+                new ApiScope("api3", "Password API"),
+                new ApiScope("scope2")
+            };
+        
+        public static IEnumerable<ApiResource> ApiResources =>
+            new List<ApiResource>
+            {
+                new ApiResource("api3", "api3_Resource"),
+                new ApiResource("api2","api2_Resource")
+                {
+                    Scopes = {"scope2"}
+                }
             };
 
         public static IEnumerable<Client> Clients =>
@@ -53,6 +68,44 @@ namespace IdentityServer
                     AllowOfflineAccess = true,
                     AllowedScopes = { "openid", "profile", "scope2" }
                 },
+                
+                // machine to machine client (from quickstart 1)
+                new Client
+                {
+                    ClientId = "client",
+                    // no interactive user, use the clientid/secret for authentication
+                    AllowedGrantTypes = GrantTypes.ClientCredentials,
+
+                    // secret for authentication
+                    ClientSecrets =
+                    {
+                        new Secret("secret".Sha256())
+                    },
+
+                    // scopes that client has access to
+                    AllowedScopes = { "api1" }
+                },
+                // interactive ASP.NET Core MVC client
+                new Client
+                {
+                    ClientId = "custom",
+                    ClientSecrets = { new Secret("secret".Sha256()) },
+                
+                    AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
+
+                    AllowOfflineAccess = true,
+                    AccessTokenLifetime = 360,
+
+                    AllowedScopes = new List<string>
+                    {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Email,
+                        IdentityServerConstants.StandardScopes.Profile,
+                        IdentityServerConstants.StandardScopes.Phone,
+                        "scope2",
+                        "api3"
+                    }
+                }
             };
     }
 }
