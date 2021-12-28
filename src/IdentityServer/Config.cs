@@ -44,7 +44,7 @@ namespace IdentityServer
                 // m2m client credentials flow client
                 new Client
                 {
-                    ClientId = "m2m.client",
+                    ClientId = "m2m",
                     ClientName = "Client Credentials Client",
 
                     AllowedGrantTypes = GrantTypes.ClientCredentials,
@@ -56,17 +56,24 @@ namespace IdentityServer
                 // interactive client using code flow + pkce
                 new Client
                 {
-                    ClientId = "interactive",
-                    ClientSecrets = { new Secret("49C1A7E1-0C79-4A89-A3D6-A37998FB86B0".Sha256()) },
+                    ClientId = "mvc",
+                    ClientSecrets = { new Secret("secret".Sha256()) },
                     
                     AllowedGrantTypes = GrantTypes.Code,
+                    RedirectUris = { "https://localhost:5401/signin-oidc" },
+                    PostLogoutRedirectUris = { "https://localhost:5401/signout-callback-oidc" },
+                    FrontChannelLogoutUri = "https://localhost:5401/signout-oidc",
 
-                    RedirectUris = { "https://localhost:44300/signin-oidc" },
-                    FrontChannelLogoutUri = "https://localhost:44300/signout-oidc",
-                    PostLogoutRedirectUris = { "https://localhost:44300/signout-callback-oidc" },
-
+                    AlwaysIncludeUserClaimsInIdToken = false,
                     AllowOfflineAccess = true,
-                    AllowedScopes = { "openid", "profile", "scope2" }
+                    RequireConsent = true,
+                    AllowedScopes =
+                    {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile,
+                        IdentityServerConstants.StandardScopes.OfflineAccess,
+                        "api3"
+                    }
                 },
                 
                 // machine to machine client (from quickstart 1)

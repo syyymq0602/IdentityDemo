@@ -2,9 +2,11 @@
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
 
+using System.IdentityModel.Tokens.Jwt;
 using IdentityServer.Quickstart;
 using IdentityServer4;
 using IdentityServerHost.Quickstart.UI;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -44,8 +46,6 @@ namespace IdentityServer
             builder.AddInMemoryIdentityResources(Config.IdentityResources);
             builder.AddInMemoryApiScopes(Config.ApiScopes);
             builder.AddInMemoryClients(Config.Clients);
-            builder.AddInMemoryApiResources(Config.ApiResources);
-
             // not recommended for production - you need to store your key material somewhere secure
             builder.AddDeveloperSigningCredential();
 
@@ -61,6 +61,15 @@ namespace IdentityServer
                     // set the redirect URI to https://localhost:5001/signin-google
                     options.ClientId = "copy client ID from Google here";
                     options.ClientSecret = "copy client secret from Google here";
+                })
+                .AddOpenIdConnect(OpenIdConnectDefaults.AuthenticationScheme, options =>
+                {
+                    options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
+                    options.SaveTokens = true;
+                    options.Authority = "https://demo.duendesoftware.com/";
+                    options.ClientId = "interactive.confidential";
+                    options.ResponseType = "code";
+                    options.ClientSecret = "secret";
                 });
         }
 
@@ -75,6 +84,7 @@ namespace IdentityServer
 
             app.UseRouting();
             app.UseIdentityServer();
+            app.UseAuthentication();
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
