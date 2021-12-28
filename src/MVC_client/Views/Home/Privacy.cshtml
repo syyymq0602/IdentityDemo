@@ -1,0 +1,26 @@
+@{
+    ViewData["Title"] = "Privacy Policy";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>Use this page to detail your site's privacy policy.</p>
+
+<h2>Access Token:</h2>
+<p>@ViewData["accessToken"]</p>
+
+<h2>Refresh Token:</h2>
+<p>@ViewData["refreshToken"]</p>
+
+<h2>Id Token:</h2>
+<p>@ViewData["idToken"]</p>
+
+<h2>AuthenticationType:</h2>
+<p>@ViewData["type"]</p>
+
+<dl>
+    @foreach (var claim in User.Claims)
+    {
+        <dt>@claim.Type</dt>
+        <dd>@claim.Value</dd>
+    }
+</dl>
